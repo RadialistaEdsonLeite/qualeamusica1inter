@@ -17,13 +17,16 @@ const musicas = [
 let musicaAtual = null;
 let pontos = 0;
 
-document.getElementById('start-game').addEventListener('click', iniciarJogo);
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('start-game').addEventListener('click', iniciarJogo);
 
-function iniciarJogo() {
-    pontos = 0; // Reinicia a pontuação
-    document.getElementById('score').textContent = `Pontuação: ${pontos}`;
-    exibirPergunta();
-}
+    function iniciarJogo() {
+        pontos = 0; // Reinicia a pontuação
+        document.getElementById('score').textContent = `Pontuação: ${pontos}`;
+        exibirPergunta();
+    }
+});
+
 
 function exibirPergunta() {
     musicaAtual = musicaAleatoria();
