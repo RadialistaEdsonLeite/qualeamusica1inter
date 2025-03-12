@@ -26,7 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         const q = questions[currentQuestionIndex];
-        audio.src = q.song;  // Usando a URL absoluta que você já passou no array
+        audio.src = `audios/${q.song}`;
+  // Usando a URL absoluta que você já passou no array
+
+        
         questionText.textContent = "Qual é a música?";
         optionsContainer.innerHTML = "";
         
