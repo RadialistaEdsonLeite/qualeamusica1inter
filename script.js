@@ -1,7 +1,7 @@
 // Array de músicas (Exemplo, substitua com seus dados reais)
 const musicas = [
     { nome: "DontLetMeDown_TheHollies", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3", alternativas: ["um nome correto", "dois errado", "tres errado", "quatro errado"], correta: 1 },
-    { nome: "INeverCry_AliceCooper", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/INeverCry_AliceCooper.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "INeverCry_AliceCooper", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/INeverCry_AliceCooper.mp3", alternativas: ["um nao", "dois sim nome correto", "tres nao", "quatro nao"], correta: 2 },
     { nome: "IStartedAJoke_BeeGees", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/IStartedAJoke_BeeGees.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
     { nome: "ItsAHeartache_BonnieTyler", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/ItsAHeartache_BonnieTyler.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
     { nome: "LovesHurts-Nazareth", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/LovesHurts-Nazareth.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
