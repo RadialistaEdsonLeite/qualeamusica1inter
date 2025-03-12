@@ -1,6 +1,15 @@
 // Array de músicas (Exemplo, substitua com seus dados reais)
 const musicas = [
     { nome: "DontLetMeDown_TheHollies", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "INeverCry_AliceCooper", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/INeverCry_AliceCooper.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "IStartedAJoke_BeeGees", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/IStartedAJoke_BeeGees.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "ItsAHeartache_BonnieTyler", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/ItsAHeartache_BonnieTyler.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "LovesHurts-Nazareth", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/LovesHurts-Nazareth.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "Mississippi_Pussicat", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/Mississippi_Pussicat.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "mymistake_pholhas", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/mymistake_pholhas.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "Sailing_RodStewart", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/Sailing_RodStewart.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "skylinepigeon_eltonjhon", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/skylinepigeon_eltonjhon.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "Tornero_ISantoCalifornia", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/Tornero_ISantoCalifornia.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
 
     // Adicione mais músicas aqui
 ];
