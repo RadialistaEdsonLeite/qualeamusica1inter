@@ -38,7 +38,7 @@ function musicaAleatoria() {
 
 function tocarMusica(arquivo) {
     const audioPlayer = document.getElementById('audio-player');
-    audioPlayer.src = `https://RadialistaEdsonLeite.github.io/qualeamusica1inter/${arquivo}`; // Caminho completo para acessar os arquivos
+    audioPlayer.src = `https://radialistaedsonleite.github.io/qualeamusica1inter/${arquivo}`; // Caminho completo para acessar os arquivos
     audioPlayer.play();
 }
 
