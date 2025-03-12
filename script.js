@@ -1,6 +1,6 @@
 // Array de músicas (Exemplo, substitua com seus dados reais)
 const musicas = [
-    { nome: "DontLetMeDown_TheHollies", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3", alternativas: ["nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
+    { nome: "DontLetMeDown_TheHollies", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
 
     // Adicione mais músicas aqui
 ];
