@@ -58,9 +58,9 @@ function exibirAlternativas(alternativas) {
 
 function verificarResposta(indiceEscolhido) {
     const musica = musicaAtual;
-    const feedback = document.createElement('p');
-
-    // Limpar perguntas e alternativas anteriores
+    const feedback = document.getElementById('feedback');
+    
+    // Limpar pergunta anterior
     document.getElementById('question-container').style.display = 'none'; 
 
     if (indiceEscolhido === musica.correta) {
@@ -72,9 +72,10 @@ function verificarResposta(indiceEscolhido) {
     }
 
     document.getElementById('score').textContent = `Pontuação: ${pontos}`;
-    document.getElementById('question-container').appendChild(feedback);
+    feedback.style.display = 'block'; // Exibe o feedback
     setTimeout(() => {
         // Esconde feedback e mostra a próxima pergunta
+        feedback.style.display = 'none';
         document.getElementById('question-container').style.display = 'block';
         exibirPergunta(); // Passa para a próxima pergunta após 2 segundos
     }, 2000); // Espera 2 segundos para exibir a próxima pergunta
