@@ -1,85 +1,57 @@
-d// Array de músicas (Exemplo, substitua com seus dados reais)
-const musicas = [
-    { nome: "DontLetMeDown_TheHollies", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3", alternativas: ["um nome correto", "dois errado", "tres errado", "quatro errado"], correta: 1 },
-    { nome: "INeverCry_AliceCooper", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/INeverCry_AliceCooper.mp3", alternativas: ["um errada", "dois correta", "tres nao", "quatro nao"], correta: 2 },
-    { nome: "IStartedAJoke_BeeGees", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/IStartedAJoke_BeeGees.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
-    { nome: "ItsAHeartache_BonnieTyler", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/ItsAHeartache_BonnieTyler.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
-    { nome: "LovesHurts-Nazareth", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/LovesHurts-Nazareth.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
-    { nome: "Mississippi_Pussicat", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/Mississippi_Pussicat.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
-    { nome: "mymistake_pholhas", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/mymistake_pholhas.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
-    { nome: "Sailing_RodStewart", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/Sailing_RodStewart.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
-    { nome: "skylinepigeon_eltonjhon", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/skylinepigeon_eltonjhon.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
-    { nome: "Tornero_ISantoCalifornia", arquivo: "https://radialistaedsonleite.github.io/qualeamusica1inter/Tornero_ISantoCalifornia.mp3", alternativas: ["um sim nome correto", "dois nao", "tres nao", "quatro nao"], correta: 1 },
-
-    // Adicione mais músicas aqui
-];
-
-let musicaAtual = null;
-let pontos = 0;
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('start-game').addEventListener('click', iniciarJogo);
-
-    function iniciarJogo() {
-    console.log("Jogo iniciado");
-    pontos = 0;
-    document.getElementById('score').textContent = `Pontuação: ${pontos}`;
-    exibirPergunta();
-}
-
-
-function exibirPergunta() {
-    musicaAtual = musicaAleatoria();
-    tocarMusica(musicaAtual.arquivo);
-    exibirAlternativas(musicaAtual.alternativas);
-}
-
-function musicaAleatoria() {
-    const indice = Math.floor(Math.random() * musicas.length);
-    return musicas[indice];
-}
-
-function tocarMusica(arquivo) {
-    const audioPlayer = document.getElementById('audio-player');
-    audioPlayer.src = `https://radialistaedsonleite.github.io/qualeamusica1inter/${arquivo}`; // Caminho completo para acessar os arquivos
-    audioPlayer.play();
-}
-
-function exibirAlternativas(alternativas) {
-    const optionsContainer = document.getElementById('options');
-    optionsContainer.innerHTML = ''; // Limpa as alternativas anteriores
-
-    alternativas.forEach((alternativa, index) => {
-        const button = document.createElement('button');
-        button.textContent = alternativa;
-        button.addEventListener('click', () => verificarResposta(index));
-        optionsContainer.appendChild(button);
-    });
-
-    document.getElementById('question-container').style.display = 'block';
-}
-
-function verificarResposta(indiceEscolhido) {
-    const musica = musicaAtual;
-    const feedback = document.getElementById('feedback');
+document.addEventListener("DOMContentLoaded", () => {
+    const questions = [
+        { song: "DontLetMeDown_TheHollies.mp3", correct: "The Hollies", options: ["The Beatles", "The Hollies", "Queen", "The Rolling Stones"] },
+        { song: "INeverCry_AliceCooper.mp3", correct: "Alice Cooper", options: ["Aerosmith", "Bon Jovi", "Alice Cooper", "Scorpions"] },
+        { song: "IStartedAJoke_BeeGees.mp3", correct: "Bee Gees", options: ["Bee Gees", "ABBA", "The Carpenters", "The Eagles"] },
+        { song: "ItsAHeartache_BonnieTyler.mp3", correct: "Bonnie Tyler", options: ["Bonnie Tyler", "Tina Turner", "Cyndi Lauper", "Madonna"] },
+        { song: "LovesHurts-Nazareth.mp3", correct: "Nazareth", options: ["Guns N' Roses", "Led Zeppelin", "Nazareth", "Deep Purple"] },
+        { song: "Mississippi_Pussicat.mp3", correct: "Pussycat", options: ["ABBA", "Pussycat", "Carpenters", "Fleetwood Mac"] },
+        { song: "Sailing_RodStewart.mp3", correct: "Rod Stewart", options: ["Rod Stewart", "Elton John", "Phil Collins", "Billy Joel"] },
+        { song: "Tornero_ISantoCalifornia.mp3", correct: "I Santo California", options: ["Bee Gees", "I Santo California", "Engelbert Humperdinck", "Ricchi e Poveri"] },
+        { song: "WutheringHeights_KateBush.mp3", correct: "Kate Bush", options: ["Madonna", "Kate Bush", "Stevie Nicks", "Pat Benatar"] },
+        { song: "mymistake_pholhas.mp3", correct: "Pholhas", options: ["Pholhas", "Roupa Nova", "Fagner", "Roberto Carlos"] }
+    ];
     
-    // Limpar pergunta anterior
-    document.getElementById('question-container').style.display = 'none'; 
-
-    if (indiceEscolhido === musica.correta) {
-        pontos += 10;
-        feedback.textContent = "✔️ Correto!";
-    } else {
-        pontos -= 5;
-        feedback.textContent = "❌ Errado!";
+    let currentQuestionIndex = 0;
+    let score = 0;
+    const audio = document.getElementById("audio");
+    const optionsContainer = document.getElementById("options");
+    const questionText = document.getElementById("question");
+    const scoreText = document.getElementById("score");
+    
+    function loadQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            document.getElementById("game").innerHTML = `<h2>Fim do Jogo!</h2><p>Sua pontuação: ${score}</p>`;
+            return;
+        }
+        
+        const q = questions[currentQuestionIndex];
+        audio.src = `audios/${q.song}`;
+        questionText.textContent = "Qual é a música?";
+        optionsContainer.innerHTML = "";
+        
+        q.options.forEach(option => {
+            const btn = document.createElement("button");
+            btn.textContent = option;
+            btn.classList.add("option");
+            btn.onclick = () => checkAnswer(option);
+            optionsContainer.appendChild(btn);
+        });
+        
+        setTimeout(() => audio.play(), 500);
     }
-
-    document.getElementById('score').textContent = `Pontuação: ${pontos}`;
-    feedback.style.display = 'block'; // Exibe o feedback
-    setTimeout(() => {
-        // Esconde feedback e mostra a próxima pergunta
-        feedback.style.display = 'none';
-        document.getElementById('question-container').style.display = 'block';
-        exibirPergunta(); // Passa para a próxima pergunta após 2 segundos
-    }, 2000); // Espera 2 segundos para exibir a próxima pergunta
-}
+    
+    function checkAnswer(answer) {
+        const q = questions[currentQuestionIndex];
+        if (answer === q.correct) {
+            score += 10;
+        } else {
+            score -= 5;
+        }
+        scoreText.textContent = `Pontuação: ${score}`;
+        currentQuestionIndex++;
+        setTimeout(loadQuestion, 2000);
+    }
+    
+    loadQuestion();
+});
