@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('start-game').addEventListener('click', iniciarJogo);
 
     function iniciarJogo() {
-        pontos = 0; // Reinicia a pontuação
-        document.getElementById('score').textContent = `Pontuação: ${pontos}`;
-        exibirPergunta();
-    }
-});
+    console.log("Jogo iniciado");
+    pontos = 0;
+    document.getElementById('score').textContent = `Pontuação: ${pontos}`;
+    exibirPergunta();
+}
 
 
 function exibirPergunta() {
