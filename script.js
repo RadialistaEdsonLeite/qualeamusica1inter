@@ -1,8 +1,6 @@
-// Esconder a tela final ao carregar a página
-document.getElementById('final-screen').style.display = 'none';
-
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('final-screen').style.display = 'none'; // Movido para cá
+    document.getElementById('final-screen').style.display = 'none';
+
     const questions = [
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3", correct: "The Hollies", options: ["The Beatles", "The Hollies", "Queen", "The Rolling Stones"] },
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/INeverCry_AliceCooper.mp3", correct: "Alice Cooper", options: ["Aerosmith", "Bon Jovi", "Alice Cooper", "Scorpions"] },
@@ -32,9 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const q = questions[currentQuestionIndex];
-        audio.src = q.song;  
+        audio.src = q.song;
         questionText.textContent = "Qual é a música?";
-        optionsContainer.innerHTML = "";  
+        optionsContainer.innerHTML = "";
 
         q.options.forEach(option => {
             const btn = document.createElement("button");
@@ -56,71 +54,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         scoreText.textContent = `Pontuação: ${score}`;
         currentQuestionIndex++;
-
-setTimeout(() => {
-    audio.load(); // Garante que o áudio seja carregado corretamente
-    audio.play();
-}, 500);
-
+        loadQuestion();
     }
 
     function showFinalScreen() {
-        gameContainer.style.display = "none";  
-        finalScreen.style.display = "block";  
+        gameContainer.style.display = "none";
+        finalScreen.style.display = "block";
         finalScreen.innerHTML = `
             <h1>Parabéns, você completou o jogo!</h1>
             <p>Sua pontuação final: <strong>${score}</strong> 🎉</p>
-            <button onclick="restartGame()">Jogar Novamente</button>
-            <button onclick="exitGame()">Fechar o Jogo</button>
+            <button id="restart-btn">Jogar Novamente</button>
+            <button id="exit-btn">Fechar o Jogo</button>
         `;
+
+        document.getElementById("restart-btn").addEventListener("click", restartGame);
+        document.getElementById("exit-btn").addEventListener("click", exitGame);
     }
 
-function showFinalScreen() {
-    gameContainer.style.display = "none";  
-    finalScreen.style.display = "block";  
-    finalScreen.innerHTML = `
-        <h1>Parabéns, você completou o jogo!</h1>
-        <p>Sua pontuação final: <strong>${score}</strong> 🎉</p>
-        <button id="restart-btn">Jogar Novamente</button>
-        <button id="exit-btn">Fechar o Jogo</button>
-    `;
-
-    // Adiciona os eventos aos botões
-    document.getElementById("restart-btn").addEventListener("click", restartGame);
-    document.getElementById("exit-btn").addEventListener("click", exitGame);
-}
-
     function restartGame() {
-    score = 0;
-    currentQuestionIndex = 0;
-    finalScreen.style.display = "none"; // Oculta a tela final
-    gameContainer.style.display = "block"; // Exibe o jogo
-    scoreText.textContent = `Pontuação: ${score}`;
-    loadQuestion();
-}
+        score = 0;
+        currentQuestionIndex = 0;
+        finalScreen.style.display = "none";
+        gameContainer.style.display = "block";
+        scoreText.textContent = `Pontuação: ${score}`;
+        loadQuestion();
+    }
 
-function exitGame() {
-    alert("Obrigado por jogar! Até a próxima! 🎶");
-    location.reload(); // Recarrega a página para reiniciar o jogo
-}
-
-
-    
-
+    function exitGame() {
+        alert("Obrigado por jogar! Até a próxima! 🎶");
+        location.reload();
+    }
 
     loadQuestion();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
