@@ -19,7 +19,10 @@
 <body>
     <h1>Qual é a Música?</h1>
     <p id="question">Qual é a música?</p>
+    <div id="audio-container">
     <audio id="audio" controls></audio>
+</div>
+
     <div id="options"></div>
     <p id="score">Pontuação: 0</p>
 
@@ -33,12 +36,8 @@
         <button onclick="restartGame()">Jogar Novamente</button>
         <button onclick="exitGame()">Sair</button>
     </div>
+    <!-- Adicione esta linha antes do fechamento do body -->
+<div id="game"></div>
 
-    <script src="scripts.js"></script> <!-- Se você for usar um arquivo JS separado -->
-</body>
-</html>
-
-
-    
-</body>
+ </body>
 </html>
