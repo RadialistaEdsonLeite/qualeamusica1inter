@@ -30,7 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const q = questions[currentQuestionIndex];
-        audio.src = q.song;
+        if (audio.src !== q.song) {
+    audio.src = q.song;
+}
+
         questionText.textContent = "Qual é a música?";
         optionsContainer.innerHTML = "";
 
