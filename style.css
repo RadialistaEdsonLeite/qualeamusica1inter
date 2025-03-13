@@ -29,16 +29,23 @@ h1 {
 }
 
 #options button {
-    width: 200px; /* Define um tamanho fixo para os botões */
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    background-color: #007bff;
+    display: block;
+    width: 70%; /* Ajuste a largura conforme o tamanho da tela */
+    margin: 10px 0;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #4CAF50;
     color: white;
+    border: none;
     border-radius: 5px;
-    transition: background 0.3s;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
+
+#options button:hover {
+    background-color: #45a049;
+}
+
 
 #options button:hover {
     background-color: #0056b3;
