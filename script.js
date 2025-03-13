@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('final-screen').style.display = 'none';
-
     const questions = [
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3", correct: "The Hollies", options: ["The Beatles", "The Hollies", "Queen", "The Rolling Stones"] },
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/INeverCry_AliceCooper.mp3", correct: "Alice Cooper", options: ["Aerosmith", "Bon Jovi", "Alice Cooper", "Scorpions"] },
@@ -30,10 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const q = questions[currentQuestionIndex];
-        if (audio.src !== q.song) {
-    audio.src = q.song;
-}
-
+        audio.src = q.song;
         questionText.textContent = "Qual é a música?";
         optionsContainer.innerHTML = "";
 
