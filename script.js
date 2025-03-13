@@ -93,10 +93,13 @@ document.addEventListener("DOMContentLoaded", () => {
         loadQuestion();
     }
 
-    function exitGame() {
-        alert("Obrigado por jogar! Até a próxima! 🎶");
-        location.reload();
-    }
+function exitGame() {
+    alert("Obrigado por jogar! Até a próxima! 🎶");
+    gameContainer.style.display = "none";
+    finalScreen.style.display = "none";
+    document.getElementById('start-screen').style.display = "block"; // Se houver uma tela inicial
+}
+
 
     loadQuestion();
 });
