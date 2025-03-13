@@ -90,11 +90,22 @@ function showFinalScreen() {
     document.getElementById("exit-btn").addEventListener("click", exitGame);
 }
 
+    function restartGame() {
+    score = 0;
+    currentQuestionIndex = 0;
+    finalScreen.style.display = "none"; // Oculta a tela final
+    gameContainer.style.display = "block"; // Exibe o jogo
+    scoreText.textContent = `Pontuação: ${score}`;
+    loadQuestion();
+}
 
 function exitGame() {
     alert("Obrigado por jogar! Até a próxima! 🎶");
     location.reload(); // Recarrega a página para reiniciar o jogo
 }
+
+
+    
 
 
     loadQuestion();
