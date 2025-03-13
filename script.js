@@ -2,6 +2,7 @@
 document.getElementById('final-screen').style.display = 'none';
 
 document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('final-screen').style.display = 'none'; // Movido para cá
     const questions = [
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3", correct: "The Hollies", options: ["The Beatles", "The Hollies", "Queen", "The Rolling Stones"] },
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/INeverCry_AliceCooper.mp3", correct: "Alice Cooper", options: ["Aerosmith", "Bon Jovi", "Alice Cooper", "Scorpions"] },
