@@ -75,16 +75,19 @@ setTimeout(() => {
         `;
     }
 
-function restartGame() {
-    score = 0;
-    currentQuestionIndex = 0;
-    document.getElementById("final-screen").style.display = "none";
-    document.getElementById("game").style.display = "block"; // Mostrar o jogo novamente
-    document.getElementById("options").style.display = "block";
-    document.getElementById("question").style.display = "block";
-    document.getElementById("audio-container").style.display = "block";
-    scoreText.textContent = `Pontuação: ${score}`; // Corrigido para atualizar a pontuação corretamente
-    loadQuestion();
+function showFinalScreen() {
+    gameContainer.style.display = "none";  
+    finalScreen.style.display = "block";  
+    finalScreen.innerHTML = `
+        <h1>Parabéns, você completou o jogo!</h1>
+        <p>Sua pontuação final: <strong>${score}</strong> 🎉</p>
+        <button id="restart-btn">Jogar Novamente</button>
+        <button id="exit-btn">Fechar o Jogo</button>
+    `;
+
+    // Adiciona os eventos aos botões
+    document.getElementById("restart-btn").addEventListener("click", restartGame);
+    document.getElementById("exit-btn").addEventListener("click", exitGame);
 }
 
 
