@@ -21,19 +21,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const optionsContainer = document.getElementById("options");
     const questionText = document.getElementById("question");
     const scoreText = document.getElementById("score");
+    const gameContainer = document.getElementById("game");
+    const finalScreen = document.getElementById("final-screen");
 
     function loadQuestion() {
         if (currentQuestionIndex >= questions.length) {
-            // Fim do jogo, exibe a tela final
-            document.getElementById("game").innerHTML = `<h2>Fim do Jogo!</h2><p>Sua pontuação: ${score}</p>`;
-            showFinalScreen();  // Exibe a tela de finalização
-            return;  // Não carrega mais perguntas
+            showFinalScreen();
+            return;
         }
 
         const q = questions[currentQuestionIndex];
-        audio.src = q.song;  // Atualizando a música para o player
+        audio.src = q.song;  
         questionText.textContent = "Qual é a música?";
-        optionsContainer.innerHTML = "";  // Limpar as opções antigas
+        optionsContainer.innerHTML = "";  
 
         q.options.forEach(option => {
             const btn = document.createElement("button");
@@ -55,25 +55,40 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         scoreText.textContent = `Pontuação: ${score}`;
         currentQuestionIndex++;
-        setTimeout(loadQuestion, 2000);
+
+        setTimeout(() => {
+            if (currentQuestionIndex >= questions.length) {
+                showFinalScreen();
+            } else {
+                loadQuestion();
+            }
+        }, 2000);
     }
 
-    // Função que exibe a tela final de conclusão
     function showFinalScreen() {
-        document.getElementById('final-screen').style.display = 'block'; // Exibe a tela final
+        gameContainer.style.display = "none";  
+        finalScreen.style.display = "block";  
+        finalScreen.innerHTML = `
+            <h1>Parabéns, você completou o jogo!</h1>
+            <p>Sua pontuação final: <strong>${score}</strong> 🎉</p>
+            <button onclick="restartGame()">Jogar Novamente</button>
+            <button onclick="exitGame()">Fechar o Jogo</button>
+        `;
     }
 
-    // Função para reiniciar o jogo
     function restartGame() {
-        location.reload(); // Recarrega a página para reiniciar o jogo
+        score = 0;
+        currentQuestionIndex = 0;
+        gameContainer.style.display = "block";
+        finalScreen.style.display = "none";
+        scoreText.textContent = "Pontuação: 0";
+        loadQuestion();
     }
 
-    // Função para sair do jogo
     function exitGame() {
-        window.close(); // Fecha a aba (não funciona em todos os navegadores)
-        // Alternativa: redirecionar para outra página
-        // window.location.href = "https://www.google.com"; // Redireciona para Google ou outro site
+        alert("Obrigado por jogar! Até a próxima! 🎶");
+        window.close();
     }
 
-    loadQuestion(); // Começa o jogo
+    loadQuestion();
 });
