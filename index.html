@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qual é a Música?</title>
-    <link rel="stylesheet" href="https://radialistaedsonleite.github.io/jogos-CSS/style.css">
-
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #options button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎵 Qual é a Música? 🎶</h1>
-        <audio id="player" controls></audio>
-        <div id="opcoes" class="opcoes"></div>
-        <p id="feedback"></p>
-        <p>Pontuação: <span id="pontuacao">0</span></p>
-        <button id="proxima" style="display: none;">Próxima Música</button>
-    </div>
+    <h1>Qual é a Música?</h1>
+    <p id="question">Qual é a música?</p>
+    <audio id="audio" controls></audio>
+    <div id="options"></div>
+    <p id="score">Pontuação: 0</p>
 
     <script src="script.js"></script>
 </body>
