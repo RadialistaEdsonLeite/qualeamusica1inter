@@ -100,6 +100,37 @@ function exitGame() {
     document.getElementById('start-screen').style.display = "block"; // Se houver uma tela inicial
 }
 
+function showFinalScreen() {
+    gameContainer.style.display = "none";
+    finalScreen.style.display = "block";
+    finalScreen.innerHTML = "";
 
+    const congratsMessage = document.createElement("h1");
+    congratsMessage.textContent = "Parabéns, você completou o jogo!";
+    finalScreen.appendChild(congratsMessage);
+
+    const finalScore = document.createElement("p");
+    finalScore.innerHTML = `Sua pontuação final: <strong>${score}</strong> 🎉`;
+    finalScreen.appendChild(finalScore);
+
+    const restartBtn = document.createElement("button");
+    restartBtn.textContent = "Jogar Novamente";
+    restartBtn.id = "restart-btn";
+    restartBtn.addEventListener("click", restartGame);
+    finalScreen.appendChild(restartBtn);
+
+    const exitBtn = document.createElement("button");
+    exitBtn.textContent = "Fechar o Jogo";
+    exitBtn.id = "exit-btn";
+    exitBtn.addEventListener("click", exitGame);
+    finalScreen.appendChild(exitBtn);
+    
+    const finalImage = document.createElement("img");
+    finalImage.src = "path-to-image/congrats.png"; // Caminho para a imagem
+    finalScreen.appendChild(finalImage);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Restante do código
     loadQuestion();
 });
