@@ -76,19 +76,35 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    function restartGame() {
-        score = 0;
-        currentQuestionIndex = 0;
-        gameContainer.style.display = "block";
-        finalScreen.style.display = "none";
-        scoreText.textContent = "Pontuação: 0";
-        loadQuestion();
-    }
+function restartGame() {
+    score = 0;
+    currentQuestionIndex = 0;
+    document.getElementById("final-screen").style.display = "none";
+    document.getElementById("options").style.display = "block";
+    document.getElementById("question").style.display = "block";
+    document.getElementById("audio-container").style.display = "block";
+    updateScore();
+    loadQuestion();
+}
 
-    function exitGame() {
-        alert("Obrigado por jogar! Até a próxima! 🎶");
-        window.close();
-    }
+function exitGame() {
+    alert("Obrigado por jogar! Até a próxima! 🎶");
+    window.close(); // Isso tenta fechar a aba do navegador, mas pode não funcionar dependendo das permissões do navegador.
+}
 
     loadQuestion();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
