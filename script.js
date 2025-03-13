@@ -1,3 +1,6 @@
+// Esconder a tela final ao carregar a página
+document.getElementById('final-screen').style.display = 'none';
+
 document.addEventListener("DOMContentLoaded", () => {
     const questions = [
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3", correct: "The Hollies", options: ["The Beatles", "The Hollies", "Queen", "The Rolling Stones"] },
