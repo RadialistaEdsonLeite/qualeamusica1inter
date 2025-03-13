@@ -21,8 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function loadQuestion() {
         if (currentQuestionIndex >= questions.length) {
+            // Fim do jogo, exibe a tela final
             document.getElementById("game").innerHTML = `<h2>Fim do Jogo!</h2><p>Sua pontuação: ${score}</p>`;
-            return;
+            showFinalScreen();  // Exibe a tela de finalização
+            return;  // Não carrega mais perguntas
         }
 
         const q = questions[currentQuestionIndex];
@@ -53,31 +55,22 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(loadQuestion, 2000);
     }
 
-    loadQuestion();
+    // Função que exibe a tela final de conclusão
+    function showFinalScreen() {
+        document.getElementById('final-screen').style.display = 'block'; // Exibe a tela final
+    }
 
+    // Função para reiniciar o jogo
+    function restartGame() {
+        location.reload(); // Recarrega a página para reiniciar o jogo
+    }
 
+    // Função para sair do jogo
+    function exitGame() {
+        window.close(); // Fecha a aba (não funciona em todos os navegadores)
+        // Alternativa: redirecionar para outra página
+        // window.location.href = "https://www.google.com"; // Redireciona para Google ou outro site
+    }
 
-// Função que exibe a tela final de conclusão
-function showFinalScreen() {
-    document.getElementById('final-screen').style.display = 'block'; // Exibe a tela final
-}
-
-// Função para reiniciar o jogo
-function restartGame() {
-    location.reload(); // Recarrega a página para reiniciar o jogo
-}
-
-// Função para sair do jogo
-function exitGame() {
-    window.close(); // Fecha a aba (não funciona em todos os navegadores)
-    // Alternativa: redirecionar para outra página
-    // window.location.href = "https://www.google.com"; // Redireciona para Google ou outro site
-}
-
-// Simulando o momento em que o jogo chega ao fim
-// Quando o jogador completar a tarefa ou atingir o objetivo, chame a função showFinalScreen()
-showFinalScreen();
-
-
-    
+    loadQuestion(); // Começa o jogo
 });
