@@ -11,42 +11,36 @@ document.addEventListener("DOMContentLoaded", () => {
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/WutheringHeights_KateBush.mp3", correct: "Kate Bush", options: ["Madonna", "Kate Bush", "Stevie Nicks", "Pat Benatar"] },
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/mymistake_pholhas.mp3", correct: "Pholhas", options: ["Pholhas", "Roupa Nova", "Fagner", "Roberto Carlos"] }
     ];
-    
+
     let currentQuestionIndex = 0;
     let score = 0;
     const audio = document.getElementById("audio");
     const optionsContainer = document.getElementById("options");
     const questionText = document.getElementById("question");
     const scoreText = document.getElementById("score");
-    
-function loadQuestion() {
-    if (currentQuestionIndex >= questions.length) {
-        document.getElementById("game").innerHTML = `<h2>Fim do Jogo!</h2><p>Sua pontuação: ${score}</p>`;
-        return;
+
+    function loadQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            document.getElementById("game").innerHTML = `<h2>Fim do Jogo!</h2><p>Sua pontuação: ${score}</p>`;
+            return;
+        }
+
+        const q = questions[currentQuestionIndex];
+        audio.src = q.song;  // Atualizando a música para o player
+        questionText.textContent = "Qual é a música?";
+        optionsContainer.innerHTML = "";  // Limpar as opções antigas
+
+        q.options.forEach(option => {
+            const btn = document.createElement("button");
+            btn.textContent = option;
+            btn.classList.add("option");
+            btn.onclick = () => checkAnswer(option);
+            optionsContainer.appendChild(btn);
+        });
+
+        setTimeout(() => audio.play(), 500);
     }
 
-    const q = questions[currentQuestionIndex];
-    console.log("Carregando pergunta: ", q);  // Verifica a pergunta que está sendo carregada
-    audio.src = q.song;
-    questionText.textContent = "Qual é a música?";
-    optionsContainer.innerHTML = "";
-
-    q.options.forEach(option => {
-        const btn = document.createElement("button");
-        btn.textContent = option;
-        btn.classList.add("option");
-        btn.onclick = () => checkAnswer(option);
-        optionsContainer.appendChild(btn);
-    });
-
-    console.log("Botões de opção criados");  // Verifica se os botões estão sendo criados
-    setTimeout(() => {
-        audio.play();
-        console.log("Tocando áudio");  // Verifica se o áudio está sendo tocado
-    }, 500);
-}
-
-    
     function checkAnswer(answer) {
         const q = questions[currentQuestionIndex];
         if (answer === q.correct) {
@@ -58,6 +52,6 @@ function loadQuestion() {
         currentQuestionIndex++;
         setTimeout(loadQuestion, 2000);
     }
-    
+
     loadQuestion();
 });
