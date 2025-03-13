@@ -57,13 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
         scoreText.textContent = `Pontuação: ${score}`;
         currentQuestionIndex++;
 
-        setTimeout(() => {
-            if (currentQuestionIndex >= questions.length) {
-                showFinalScreen();
-            } else {
-                loadQuestion();
-            }
-        }, 2000);
+setTimeout(() => {
+    audio.load(); // Garante que o áudio seja carregado corretamente
+    audio.play();
+}, 500);
+
     }
 
     function showFinalScreen() {
@@ -81,17 +79,20 @@ function restartGame() {
     score = 0;
     currentQuestionIndex = 0;
     document.getElementById("final-screen").style.display = "none";
+    document.getElementById("game").style.display = "block"; // Mostrar o jogo novamente
     document.getElementById("options").style.display = "block";
     document.getElementById("question").style.display = "block";
     document.getElementById("audio-container").style.display = "block";
-    updateScore();
+    scoreText.textContent = `Pontuação: ${score}`; // Corrigido para atualizar a pontuação corretamente
     loadQuestion();
 }
 
+
 function exitGame() {
     alert("Obrigado por jogar! Até a próxima! 🎶");
-    window.close(); // Isso tenta fechar a aba do navegador, mas pode não funcionar dependendo das permissões do navegador.
+    location.reload(); // Recarrega a página para reiniciar o jogo
 }
+
 
     loadQuestion();
 });
