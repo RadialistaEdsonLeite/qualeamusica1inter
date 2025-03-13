@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('final-screen').style.display = 'none';
+
     const questions = [
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3", correct: "The Hollies", options: ["The Beatles", "The Hollies", "Queen", "The Rolling Stones"] },
         { song: "https://radialistaedsonleite.github.io/qualeamusica1inter/INeverCry_AliceCooper.mp3", correct: "Alice Cooper", options: ["Aerosmith", "Bon Jovi", "Alice Cooper", "Scorpions"] },
@@ -29,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const q = questions[currentQuestionIndex];
         audio.src = q.song;
+
         questionText.textContent = "Qual é a música?";
         optionsContainer.innerHTML = "";
 
@@ -58,15 +61,27 @@ document.addEventListener("DOMContentLoaded", () => {
     function showFinalScreen() {
         gameContainer.style.display = "none";
         finalScreen.style.display = "block";
-        finalScreen.innerHTML = `
-            <h1>Parabéns, você completou o jogo!</h1>
-            <p>Sua pontuação final: <strong>${score}</strong> 🎉</p>
-            <button id="restart-btn">Jogar Novamente</button>
-            <button id="exit-btn">Fechar o Jogo</button>
-        `;
+        finalScreen.innerHTML = "";
 
-        document.getElementById("restart-btn").addEventListener("click", restartGame);
-        document.getElementById("exit-btn").addEventListener("click", exitGame);
+        const congratsMessage = document.createElement("h1");
+        congratsMessage.textContent = "Parabéns, você completou o jogo!";
+        finalScreen.appendChild(congratsMessage);
+
+        const finalScore = document.createElement("p");
+        finalScore.innerHTML = `Sua pontuação final: <strong>${score}</strong> 🎉`;
+        finalScreen.appendChild(finalScore);
+
+        const restartBtn = document.createElement("button");
+        restartBtn.textContent = "Jogar Novamente";
+        restartBtn.id = "restart-btn";
+        restartBtn.addEventListener("click", restartGame);
+        finalScreen.appendChild(restartBtn);
+
+        const exitBtn = document.createElement("button");
+        exitBtn.textContent = "Fechar o Jogo";
+        exitBtn.id = "exit-btn";
+        exitBtn.addEventListener("click", exitGame);
+        finalScreen.appendChild(exitBtn);
     }
 
     function restartGame() {
