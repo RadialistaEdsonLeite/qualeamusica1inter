@@ -51,20 +51,23 @@ h1 {
     background-color: #0056b3;
 }
 
-
 button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: none;
-    background-color: red;
-    color: black;
-    font-size: 26px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
+    background-color: #4CAF50; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    padding: 15px 32px; /* Espaçamento interno */
+    text-align: center; /* Alinhamento do texto */
+    text-decoration: none; /* Remover sublinhado */
+    display: inline-block; /* Alinhar os botões */
+    font-size: 16px; /* Tamanho da fonte */
+    border: none; /* Remover borda */
+    border-radius: 4px; /* Borda arredondada */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
 }
+
+button:hover {
+    background-color: #45a049; /* Cor de fundo ao passar o mouse */
+}
+
 
 button:hover {
     background: #ffdd44;
