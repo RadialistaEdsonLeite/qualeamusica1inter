@@ -19,12 +19,6 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-#options {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 10px; /* Adiciona um espaçamento entre os botões */
 }
 
@@ -43,36 +37,10 @@ h1 {
 }
 
 #options button:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Altera a cor ao passar o mouse */
 }
 
-
-#options button:hover {
-    background-color: #0056b3;
-}
-
-button {
-    background-color: #4CAF50; /* Cor de fundo */
-    color: white; /* Cor do texto */
-    padding: 15px 32px; /* Espaçamento interno */
-    text-align: center; /* Alinhamento do texto */
-    text-decoration: none; /* Remover sublinhado */
-    display: inline-block; /* Alinhar os botões */
-    font-size: 16px; /* Tamanho da fonte */
-    border: none; /* Remover borda */
-    border-radius: 4px; /* Borda arredondada */
-    cursor: pointer; /* Cursor de mão ao passar o mouse */
-}
-
-button:hover {
-    background-color: #45a049; /* Cor de fundo ao passar o mouse */
-}
-
-
-button:hover {
-    background: #ffdd44;
-}
-
+/* Estilo para botões de resposta correta/errada */
 button.correct {
     background: #4CAF50;
     color: white;
@@ -87,7 +55,6 @@ button.wrong {
     margin-top: 15px;
     font-size: 18px;
 }
-
 
 #final-screen {
     text-align: center;
