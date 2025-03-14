@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             score -= 5;
         }
-        scoreText.textContent = `Pontuação: ${score}`;
+        scoreText.textContent = Pontuação: ${score};
         currentQuestionIndex++;
     
         // Verifica se chegou ao final após responder a última pergunta
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         finalScreen.appendChild(congratsMessage);
     
         const finalScore = document.createElement("p");
-        finalScore.innerHTML = `Sua pontuação final: <strong>${score}</strong> 🎉`;
+        finalScore.innerHTML = Sua pontuação final: <strong>${score}</strong> 🎉;
         finalScreen.appendChild(finalScore);
     
         const restartBtn = document.createElement("button");
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentQuestionIndex = 0;
         finalScreen.style.display = "none";
         gameContainer.style.display = "block";
-        scoreText.textContent = `Pontuação: ${score}`;
+        scoreText.textContent = Pontuação: ${score};
         loadQuestion();
     }
 
