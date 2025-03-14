@@ -1,19 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qual é a Música?</title>
-    <link rel="stylesheet" href="qualeamusica1inter/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>🎵 Qual é a Música? 🎵</h1>
-        <audio id="audio" controls></audio>
-        <div id="options" class="options"></div>
-        <p id="feedback"></p>
-        <p id="score">Pontuação: 0</p>
-    </div>
-    <script src="qualeamusica1inter/script.js"></script>
-</body>
-</html>
+ <html lang="pt-br">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Qual é a Música? Clique a abaixo, ouça e responda!</title>
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+             text-align: center;
+         }
+         #options {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+         }
+         #options button {
+             display: block; /* Garante que os botões ocupem toda a linha */
+             width: 98%; /* Ajuste conforme necessário */
+         }
+     </style>
+     <title>Qual é a Música? Clique abaixo, ouça e responda!</title>
+     <link rel="stylesheet" href="style.css"> <!-- Vinculando o arquivo CSS -->
+ </head>
+ <body>
+     <body>
+     <div id="game">
+         <h1>Qual é a Música?</h1>
+         <p id="question">Qual é a música?</p>
+         <div id="audio-container">
+             <audio id="audio" controls></audio>
+         </div>
+         <div id="options"></div>
+         <p id="score">Pontuação: 0</p>
+     </div>
+ 
+     <!-- Tela de Conclusão -->
+     <div id="final-screen" style="display: none; text-align: center; padding: 20px;">
+         <!-- O conteúdo será preenchido pelo JavaScript -->
+     </div>
+ 
+     <!-- Carregar o script no final do body -->
+     <script src="script.js"></script>
+ </body>
+ </html>
