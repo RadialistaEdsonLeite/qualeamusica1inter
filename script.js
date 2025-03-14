@@ -49,26 +49,25 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => audio.play(), 500);
     }
 
-    function checkAnswer(answer) {
-    const q = questions[currentQuestionIndex];
-    if (answer === q.correct) {
-        score += 10;
-    } else {
-        score -= 5;
+        function checkAnswer(answer) {
+        const q = questions[currentQuestionIndex];
+        if (answer === q.correct) {
+            score += 10;
+        } else {
+            score -= 5;
+        }
+        scoreText.textContent = `Pontuação: ${score}`;
+        currentQuestionIndex++;
+    
+        // Verifica se chegou ao final após responder a última pergunta
+        if (currentQuestionIndex >= questions.length) {
+            audio.pause(); // Para o áudio imediatamente
+            audio.currentTime = 0; // Reinicia o áudio para o começo
+            showFinalScreen(); // Agora sim, exibe a tela final
+        } else {
+            loadQuestion();
+        }
     }
-    scoreText.textContent = `Pontuação: ${score}`;
-    currentQuestionIndex++;
-
-    // Verifica se chegou ao final após responder a última pergunta
-    if (currentQuestionIndex >= questions.length) {
-        audio.pause(); // Para o áudio imediatamente
-        audio.currentTime = 0; // Reinicia o áudio para o começo
-        showFinalScreen(); // Agora sim, exibe a tela final
-    } else {
-        loadQuestion();
-    }
-}
-
 
         function showFinalScreen() {
         audio.pause(); // Para o áudio imediatamente
