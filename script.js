@@ -56,7 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         scoreText.textContent = `Pontuação: ${score}`;
         currentQuestionIndex++;
-        loadQuestion();
+
+        // Verifica se chegou ao final após responder a última pergunta
+        if (currentQuestionIndex >= questions.length) {
+            showFinalScreen();
+        } else {
+            loadQuestion();
+        }
     }
 
     function showFinalScreen() {
