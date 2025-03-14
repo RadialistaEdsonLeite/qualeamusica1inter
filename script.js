@@ -65,37 +65,41 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function showFinalScreen() {
+        function showFinalScreen() {
+        audio.pause(); // Para o áudio imediatamente
+        audio.currentTime = 0; // Reinicia o áudio para o começo
+    
         gameContainer.style.display = "none";
         finalScreen.style.display = "block";
         finalScreen.innerHTML = "";
-
+    
         const congratsMessage = document.createElement("h1");
         congratsMessage.textContent = "Parabéns, você completou o jogo!";
         finalScreen.appendChild(congratsMessage);
-
+    
         const finalScore = document.createElement("p");
         finalScore.innerHTML = `Sua pontuação final: <strong>${score}</strong> 🎉`;
         finalScreen.appendChild(finalScore);
-
+    
         const restartBtn = document.createElement("button");
         restartBtn.textContent = "Jogar Novamente";
         restartBtn.id = "restart-btn";
         restartBtn.addEventListener("click", restartGame);
         finalScreen.appendChild(restartBtn);
-
+    
         const exitBtn = document.createElement("button");
         exitBtn.textContent = "Fechar o Jogo";
         exitBtn.id = "exit-btn";
         exitBtn.addEventListener("click", exitGame);
         finalScreen.appendChild(exitBtn);
-        
- const finalImage = document.createElement("img");
-finalImage.src = "100.png"; // Caminho para a imagem
-finalImage.style.display = "block";
-finalImage.style.margin = "20px auto"; // Centraliza horizontalmente
-finalScreen.appendChild(finalImage);
+    
+        const finalImage = document.createElement("img");
+        finalImage.src = "100.png"; // Caminho para a imagem
+        finalImage.style.display = "block";
+        finalImage.style.margin = "20px auto"; // Centraliza horizontalmente
+        finalScreen.appendChild(finalImage);
     }
+
 
     function restartGame() {
         score = 0;
