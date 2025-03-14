@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadQuestion() {
         // Verifica se todas as perguntas foram respondidas
         if (currentQuestionIndex >= questions.length) {
+        audio.pause(); // Para o áudio imediatamente
+        audio.currentTime = 0; // Reinicia o áudio para o começo
             showFinalScreen();
             return;
         }
