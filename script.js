@@ -90,9 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
         exitBtn.addEventListener("click", exitGame);
         finalScreen.appendChild(exitBtn);
         
-        const finalImage = document.createElement("img");
-        finalImage.src = "100.png"; // Caminho para a imagem
-        finalScreen.appendChild(finalImage);
+ const finalImage = document.createElement("img");
+finalImage.src = "100.png"; // Caminho para a imagem
+finalImage.style.display = "block";
+finalImage.style.margin = "20px auto"; // Centraliza horizontalmente
+finalScreen.appendChild(finalImage);
     }
 
     function restartGame() {
