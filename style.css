@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background: #fafaffff;
-    color: darkgreen;
+    color: darkblue;
     height: 100vh;
     /*display: flex;*/
     justify-content: center;
@@ -28,7 +28,7 @@ h1 {
     margin: 10px 0;
     padding: 15px;
     font-size: 18px;
-    background-color: black;
+    background-color: darkblue;
     color: white;
     border: none;
     border-radius: 5px;
