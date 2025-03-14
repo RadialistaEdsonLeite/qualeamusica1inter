@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         finalScreen.appendChild(exitBtn);
         
         const finalImage = document.createElement("img");
-        finalImage.src = "path-to-image/congrats.png"; // Caminho para a imagem
+        finalImage.src = "100.png"; // Caminho para a imagem
         finalScreen.appendChild(finalImage);
     }
 
