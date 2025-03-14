@@ -24,10 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const finalScreen = document.getElementById("final-screen");
 
     function loadQuestion() {
-        // Verifica se todas as perguntas foram respondidas
         if (currentQuestionIndex >= questions.length) {
-        audio.pause(); // Para o áudio imediatamente
-        audio.currentTime = 0; // Reinicia o áudio para o começo
             showFinalScreen();
             return;
         }
@@ -49,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => audio.play(), 500);
     }
 
-        function checkAnswer(answer) {
+    function checkAnswer(answer) {
         const q = questions[currentQuestionIndex];
         if (answer === q.correct) {
             score += 10;
@@ -58,52 +55,34 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         scoreText.textContent = Pontuação: ${score};
         currentQuestionIndex++;
-    
-        // Verifica se chegou ao final após responder a última pergunta
-        if (currentQuestionIndex >= questions.length) {
-            audio.pause(); // Para o áudio imediatamente
-            audio.currentTime = 0; // Reinicia o áudio para o começo
-            showFinalScreen(); // Agora sim, exibe a tela final
-        } else {
-            loadQuestion();
-        }
+        loadQuestion();
     }
 
-        function showFinalScreen() {
-        audio.pause(); // Para o áudio imediatamente
-        audio.currentTime = 0; // Reinicia o áudio para o começo
-    
+    function showFinalScreen() {
         gameContainer.style.display = "none";
         finalScreen.style.display = "block";
         finalScreen.innerHTML = "";
-    
+
         const congratsMessage = document.createElement("h1");
         congratsMessage.textContent = "Parabéns, você completou o jogo!";
         finalScreen.appendChild(congratsMessage);
-    
+
         const finalScore = document.createElement("p");
         finalScore.innerHTML = Sua pontuação final: <strong>${score}</strong> 🎉;
         finalScreen.appendChild(finalScore);
-    
+
         const restartBtn = document.createElement("button");
         restartBtn.textContent = "Jogar Novamente";
         restartBtn.id = "restart-btn";
         restartBtn.addEventListener("click", restartGame);
         finalScreen.appendChild(restartBtn);
-    
+
         const exitBtn = document.createElement("button");
         exitBtn.textContent = "Fechar o Jogo";
         exitBtn.id = "exit-btn";
         exitBtn.addEventListener("click", exitGame);
         finalScreen.appendChild(exitBtn);
-    
-        const finalImage = document.createElement("img");
-        finalImage.src = "100.png"; // Caminho para a imagem
-        finalImage.style.display = "block";
-        finalImage.style.margin = "20px auto"; // Centraliza horizontalmente
-        finalScreen.appendChild(finalImage);
     }
-
 
     function restartGame() {
         score = 0;
