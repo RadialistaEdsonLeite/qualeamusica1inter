@@ -1,56 +1,42 @@
 <!DOCTYPE html>
- <html lang="pt-br">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Qual é a Música? Clique a abaixo, ouça e responda!</title>
-     <style>
-         body {
-             font-family: Arial, sans-serif;
-             text-align: center;
-         }
-         #options {
-             display: flex;
-             flex-direction: column;
-             align-items: center;
-         }
-         #options button {
-             display: block; /* Garante que os botões ocupem toda a linha */
-             width: 98%; /* Ajuste conforme necessário */
-         }
-     </style>
- </head>
- <body>
-     <h1>Qual é a Música1?</h1>
-     <p id="question">Qual é a música2?</p>
-     
-     <div id="audio-container">
-         <audio id="audio" controls></audio>
-     <body>
-     <div id="game">
-         <h1>Qual é a Música?</h1>
-         <p id="question">Qual é a música?</p>
-         <div id="audio-container">
-             <audio id="audio" controls></audio>
-         </div>
-         <div id="options"></div>
-         <p id="score">Pontuação: 0</p>
-     </div>
- 
-     <div id="options"></div>
-     <p id="score">Pontuação: 0</p>
- 
-     <!-- Tela de Conclusão -->
- <div id="final-screen" style="display: none; text-align: center; padding: 20px;">
-     <!-- O conteúdo será preenchido pelo JavaScript -->
- </div>
-     <div id="final-screen" style="display: none; text-align: center; padding: 20px;">
-         <!-- O conteúdo será preenchido pelo JavaScript -->
-     </div>
- 
-     <!-- Carregar o script no final do body para garantir que o DOM está pronto -->
-     <!-- Carregar o script no final do body -->
-     <script src="script.js"></script>
- 
- </body>
- </html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qual é a Música? Clique abaixo, ouça e responda!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #options button {
+            display: block; /* Garante que os botões ocupem toda a linha */
+            width: 98%; /* Ajuste conforme necessário */
+        }
+    </style>
+</head>
+<body>
+    <h1>Qual é a Música?</h1>
+    <p id="question">Qual é a música?</p>
+    
+    <div id="audio-container">
+        <audio id="audio" controls></audio>
+    </div>
+
+    <div id="options"></div>
+    <p id="score">Pontuação: 0</p>
+
+    <!-- Tela de Conclusão -->
+    <div id="final-screen" style="display: none; text-align: center; padding: 20px;">
+        <!-- O conteúdo será preenchido pelo JavaScript -->
+    </div>
+
+    <!-- Carregar o script no final do body para garantir que o DOM está pronto -->
+    <script src="script.js"></script>
+</body>
+</html>
