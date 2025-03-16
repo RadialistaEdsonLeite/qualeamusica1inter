@@ -1,104 +1,134 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    /*background: linear-gradient(120deg, #1e3c72, #2a5298);*/
-    color: black;
-    height: 100vh;
-    /*display: flex;*/
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  /*background: linear-gradient(120deg, #1e3c72, #2a5298);*/
+  color: black;
+  height: 100vh;
+  /*display: flex;*/
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
 }
 
 /* Estilo para o contêiner de áudio */
 #audio-container {
-    position: relative;
-    width: 20%; /* Ajuste conforme necessário */
-    margin: 20px auto;
+  position: relative;
+  width: 20%; /* Ajuste conforme necessário */
+  margin: 20px auto;
 }
 
 /* Remover bordas padrão do player */
 audio {
-    width: 100%;
-    border-radius: 10px; /* Arredonda as bordas do player */
-    outline: none; /* Remove o contorno */
+  width: 100%;
+  border-radius: 10px; /* Arredonda as bordas do player */
+  outline: none; /* Remove o contorno */
 }
 
 /* Personalizar o botão de reprodução */
 audio::-webkit-media-controls-play-button {
-    background-color: #4CAF50; /* Cor do botão de play */
-    border-radius: 50%;
+  background-color: #4caf50; /* Cor do botão de play */
+  border-radius: 50%;
 }
 
 audio::-webkit-media-controls-volume-slider {
-    background-color: #64b5f6; /* Cor do controle de volume */
+  background-color: #64b5f6; /* Cor do controle de volume */
 }
 
-
 h1 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 #options {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px; /* Adiciona um espaçamento entre os botões */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px; /* Adiciona um espaçamento entre os botões */
 }
 
 #options button {
-    display: block;
-    width: 95%; /* Ajuste a largura conforme o tamanho da tela */
-    margin: 10px 0;
-    padding: 15px;
-    font-size: 18px;
-    background-color: darkblue;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  display: block;
+  width: 95%; /* Ajuste a largura conforme o tamanho da tela */
+  margin: 10px 0;
+  padding: 15px;
+  font-size: 18px;
+  background-color: darkblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 #options button:hover {
-    background-color: blue; /* Altera a cor ao passar o mouse */
+  background-color: blue; /* Altera a cor ao passar o mouse */
 }
 
 /* Estilo para botões de resposta correta/errada */
 button.correct {
-    background: #4CAF50;
-    color: white;
+  background: #4caf50;
+  color: white;
 }
 
 button.wrong {
-    background: #D32F2F;
-    color: white;
+  background: #d32f2f;
+  color: white;
 }
 
 #score {
-    margin-top: 15px;
-    font-size: 18px;
+  margin-top: 15px;
+  font-size: 18px;
 }
 
 #final-screen {
-    text-align: center;
-    background-color: #f0f8ff; /* Cor de fundo suave */
-    padding: 50px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
+  text-align: center;
+  background-color: #f0f8ff; /* Cor de fundo suave */
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 22px;
-    margin: 10px;
-    background: blue;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 22px;
+  margin: 10px;
+  background: blue;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 button:hover {
-    background-color: #11125e; /* Cor de destaque quando o mouse passa */
+  background-color: #11125e; /* Cor de destaque quando o mouse passa */
+}
+
+.comment-block {
+  background-color: #f9f9f9; /* Cor de fundo suave */
+  border-left: 5px solid #007bff; /* Barra lateral para destaque */
+  padding: 15px;
+  margin: 15px 0;
+  font-size: 16px;
+  color: #333; /* Cor do texto */
+  text-align: left; /* Alinhamento do texto */
+  font-family: Arial, sans-serif;
+  border-radius: 5px; /* Bordas arredondadas */
+}
+
+/* Se quiser personalizar o título dentro do bloco */
+.comment-block h3 {
+  font-size: 218px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+/* Se quiser personalizar os parágrafos dentro do bloco */
+.comment-block p {
+  margin: 5px 0;
+}
+
+/* Adicionando uma versão escura como opção */
+.comment-block.dark {
+  background-color: #333;
+  color: #fff;
+  border-left-color: #ffcc00;
 }
