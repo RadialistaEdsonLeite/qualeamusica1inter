@@ -176,42 +176,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showFinalScreen() {
-    audio.pause();
-    audio.currentTime = 0;
+  audio.pause();
+  audio.currentTime = 0;
 
-    gameContainer.style.display = "none";
-    finalScreen.style.display = "block";
+  gameContainer.style.display = "none";
+  finalScreen.style.display = "block";
 
-    // Definir o estilo para alinhamento à esquerda nos comentários
-    finalScreen.style.textAlign = "left"; // Alinha à esquerda
-    finalScreen.style.padding = "20px"; // Adiciona um pouco de padding para melhorar a visualização
+  finalScreen.style.textAlign = "left";
+  finalScreen.style.padding = "20px";
 
-    const q = questions[currentQuestionIndex - 1]; // Última pergunta
+  const q = questions[currentQuestionIndex - 1]; // Última pergunta
 
-    let commentsHTML = "";
-    for (let i = 0; i < questions.length; i++) {
-      commentsHTML += `<p><strong>Comentário sobre a música ${
-        i + 1
-      }:</strong> ${descriptions[i]}</p>`;
-    }
-
-    finalScreen.innerHTML = `
-        <h1>Parabéns, você completou o jogo!</h1>
-        <p>Sua pontuação final: <strong>${score}</strong> 🎉</p>
-        <div>${commentsHTML}</div>
-        
-        <!-- Contêiner para botões centralizados -->
-        <div class="buttons-container">
-            <button id="restart-btn">Jogar Novamente</button>
-            <button id="exit-btn">Fechar o Jogo</button>
-        </div>
-    `;
-
-    document
-      .getElementById("restart-btn")
-      .addEventListener("click", restartGame);
-    document.getElementById("exit-btn").addEventListener("click", exitGame);
+  let commentsHTML = "";
+  for (let i = 0; i < questions.length; i++) {
+    commentsHTML += `<p><strong>Comentário sobre a música ${i + 1}:</strong> ${descriptions[i]}</p>`;
   }
+
+  // Atualizando a tela final com a pontuação
+  finalScreen.innerHTML = `
+    <h1 style="color: red; font-weight: bold; font-size: 2em;">Parabéns! Você já está com ${score} pontos!</h1>
+    <p>Sua pontuação final: <strong>${score}</strong> 🎉</p>
+    <div>${commentsHTML}</div>
+    
+    <!-- Contêiner para botões centralizados -->
+    <div class="buttons-container">
+        <button id="restart-btn">Jogar Novamente</button>
+        <button id="exit-btn">Fechar o Jogo</button>
+    </div>
+  `;
+
+  // Ações dos botões
+  document
+    .getElementById("restart-btn")
+    .addEventListener("click", restartGame);
+  document.getElementById("exit-btn").addEventListener("click", exitGame);
+}
+
+
 
   function restartGame() {
     currentQuestionIndex = 0;
