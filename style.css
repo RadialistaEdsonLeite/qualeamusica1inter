@@ -81,12 +81,14 @@ button.wrong {
 }
 
 #final-screen {
-  text-align: center;
-  background-color: #f0f8ff; /* Cor de fundo suave */
-  padding: 50px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
+  text-align: left; /* Alinha o texto à esquerda */
+  padding: 20px;
 }
+
+#final-screen p {
+  margin-bottom: 10px; /* Adiciona um espaçamento entre os parágrafos */
+}
+
 
 button {
   padding: 10px 20px;
@@ -116,7 +118,7 @@ button:hover {
 
 /* Se quiser personalizar o título dentro do bloco */
 .comment-block h3 {
-  font-size: 218px;
+  font-size: 18px;
   color: #007bff;
   margin-bottom: 10px;
 }
