@@ -14,7 +14,7 @@ body {
 /* Estilo para o contêiner de áudio */
 #audio-container {
   position: relative;
-  width: 20%; /* Ajuste conforme necessário */
+  width: 70%; /* Ajuste conforme necessário */
   margin: 20px auto;
 }
 
@@ -88,7 +88,6 @@ button.wrong {
 #final-screen p {
   margin-bottom: 10px; /* Adiciona um espaçamento entre os parágrafos */
 }
-
 
 button {
   padding: 10px 20px;
