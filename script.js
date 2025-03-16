@@ -5,66 +5,66 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3",
-      correct: "The Hollies",
-      options: ["The Beatles", "The Hollies", "Queen", "The Rolling Stones"]
+      correct: "Don't Let Me Down",
+      options: ["Let It Be", "American Pie", "Don't Let Me Down", "Imagine"] 
     },
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/INeverCry_AliceCooper.mp3",
-      correct: "Alice Cooper",
-      options: ["Aerosmith", "Bon Jovi", "Alice Cooper", "Scorpions"]
+      correct: "I Never Cry",
+      options: ["Maggie May", "My Sweet Lord", "I Never Cry", "What's Going On"]
     },
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/IStartedAJoke_BeeGees.mp3",
-      correct: "Bee Gees",
-      options: ["Aerosmith", "Bee Gees", "Alice Cooper", "Scorpions"]
-    },
+      correct: "I StartedA Joke",
+      options: ["Stairway to Heaven", "I StartedA Joke", "I Can See Clearly Now", "Superstition"]
+    }, 
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/ItsAHeartache_BonnieTyler.mp3",
-      correct: "Bonnie Tyler",
-      options: ["Aerosmith", "Bee Gees", "Bonnie Tyler", "Scorpions"]
+      correct: "It's A Heartache",
+      options: ["Lean on Me", "Rocket Man", "It's A Heartache", "The First Time Ever I Saw Your Face"]
     },
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/LovesHurts-Nazareth.mp3",
-      correct: "Nazareth",
-      options: ["Nazareth", "Bee Gees", "Bonnie Tyler", "Scorpions"]
+      correct: "Loves Hurts",
+      options: ["Loves Hurts", "Lady Madonna", "Knock Three Times", "Bridge Over Troubled Water"]
     },
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/Mississippi_Pussicat.mp3",
-      correct: "Pussycat",
-      options: ["Nazareth", "Bee Gees", "Bonnie Tyler", "Pussycat"]
+      correct: "Mississippi",
+      options: ["I Am Woman", "Take Me Home", "Let’s Stay Together", "Mississippi"]
     },
+
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/Sailing_RodStewart.mp3",
       correct: "Sailing",
-      options: ["Nazareth", "Bee Gees", "Sailing", "Pussycat"]
+      options: ["Daniel", "Angie", "Sailing", "Goodbye Yellow Brick Road"]
     },
 
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/Tornero_ISantoCalifornia.mp3",
       correct: "Tornero",
-      options: ["Tornero", "Bee Gees", "Sailing", "Pussycat"]
+      options: ["Tornero", "Champagne", "Ti scrivero", "Bella Senz'Anima"]
     },
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/WutheringHeights_KateBush.mp3",
       correct: "Wuthering Heights",
-      options: ["Tornero", "Bee Gees", "Wuthering Heights", "Pussycat"]
+      options: ["Living for the City", "Bennie and the Jets", "Wuthering Heights", "The Way We Were"]
     },
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/mymistake_pholhas.mp3",
       correct: "My Mystake",
-      options: ["Tornero", "My Mystake", "Wuthering Heights", "Pussycat"]
+      options: ["I Shot the Sheriff", "My Mystake", "Rock Your Baby", "If I Can’t Have You "]
     }
 
-    // Adicionei as outras músicas no mesmo formato
     // ... (as outras músicas aqui)
   ];
 
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   let currentQuestionIndex = 0;
-  let score = 0;
+  let score = parseInt(localStorage.getItem("playerScore")) || 0;
   const audio = document.getElementById("audio");
   const optionsContainer = document.getElementById("options");
   const questionText = document.getElementById("question");
@@ -115,16 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     setTimeout(() => {
-      audio
-        .play()
-        .catch((error) => console.error("Erro ao reproduzir áudio:", error));
+      audio.play().catch((error) => console.error("Erro ao reproduzir áudio:", error));
     }, 500);
   }
 
   function checkAnswer(answer) {
-    if (currentQuestionIndex >= questions.length) {
-      return;
-    }
+    if (currentQuestionIndex >= questions.length) return;
 
     const q = questions[currentQuestionIndex];
     audio.pause();
@@ -136,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       score -= 5;
     }
 
+    localStorage.setItem("playerScore", score);
     scoreText.textContent = `Pontuação: ${score}`;
     currentQuestionIndex++;
 
@@ -152,34 +149,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gameContainer.style.display = "none";
     finalScreen.style.display = "block";
+
+    // Definir o estilo para alinhamento à esquerda nos comentários
+    finalScreen.style.textAlign = "left";  // Alinha à esquerda
+    finalScreen.style.padding = "20px";  // Adiciona um pouco de padding para melhorar a visualização
+
+    const q = questions[currentQuestionIndex - 1]; // Última pergunta
+
+    let commentsHTML = '';
+    for (let i = 0; i < questions.length; i++) {
+        commentsHTML += `<p><strong>Comentário sobre a música ${i + 1}:</strong> ${descriptions[i]}</p>`;
+    }
+
     finalScreen.innerHTML = `
-      <h1>Parabéns, você completou o jogo!</h1>
-      <p>Sua pontuação final: <strong>${score}</strong> 🎉</p>
-      <button id="restart-btn">Jogar Novamente</button>
-      <button id="exit-btn">Fechar o Jogo</button>
-      <img src="100.png" style="display: block; margin: 20px auto;">
+        <h1>Parabéns, você completou o jogo!</h1>
+        <p>Sua pontuação final: <strong>${score}</strong> 🎉</p>
+        <div>${commentsHTML}</div>
+        
+        <!-- Contêiner para botões centralizados -->
+        <div class="buttons-container">
+            <button id="restart-btn">Jogar Novamente</button>
+            <button id="exit-btn">Fechar o Jogo</button>
+        </div>
     `;
 
-    // Exibir as descrições das músicas após o fim
-    const descriptionsContainer = document.createElement("div");
-    descriptionsContainer.innerHTML = "<h2>Sobre as músicas</h2>";
-
-    questions.forEach((q, index) => {
-      const descriptionText = document.createElement("p");
-      descriptionText.textContent = `${q.correct}: ${descriptions[index]}`;
-      descriptionsContainer.appendChild(descriptionText);
-    });
-
-    finalScreen.appendChild(descriptionsContainer);
-
-    document
-      .getElementById("restart-btn")
-      .addEventListener("click", restartGame);
+    document.getElementById("restart-btn").addEventListener("click", restartGame);
     document.getElementById("exit-btn").addEventListener("click", exitGame);
-  }
+}
+
+
 
   function restartGame() {
-    score = 0;
     currentQuestionIndex = 0;
     finalScreen.style.display = "none";
     gameContainer.style.display = "block";
@@ -192,5 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
     location.reload();
   }
 
+  scoreText.textContent = `Pontuação: ${score}`;
   loadQuestion();
 });
