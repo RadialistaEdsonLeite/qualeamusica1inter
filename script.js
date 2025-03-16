@@ -79,8 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
       options: [
         "Living for the City",
         "Bennie and the Jets",
-        "Wuthering Heights",
-        "The Way We Were"
+        "The Way We Were",
+        "Wuthering Heights"
       ]
     },
     {
