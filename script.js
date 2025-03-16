@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3",
       correct: "Don't Let Me Down",
-      options: ["Let It Be", "American Pie", "Don't Let Me Down", "Imagine"] 
+      options: ["Let It Be", "American Pie", "Don't Let Me Down", "Imagine"]
     },
     {
       song:
@@ -18,25 +18,45 @@ document.addEventListener("DOMContentLoaded", () => {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/IStartedAJoke_BeeGees.mp3",
       correct: "I StartedA Joke",
-      options: ["Stairway to Heaven", "I StartedA Joke", "I Can See Clearly Now", "Superstition"]
-    }, 
+      options: [
+        "Stairway to Heaven",
+        "I StartedA Joke",
+        "I Can See Clearly Now",
+        "Superstition"
+      ]
+    },
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/ItsAHeartache_BonnieTyler.mp3",
       correct: "It's A Heartache",
-      options: ["Lean on Me", "Rocket Man", "It's A Heartache", "The First Time Ever I Saw Your Face"]
+      options: [
+        "Lean on Me",
+        "Rocket Man",
+        "It's A Heartache",
+        "The First Time Ever I Saw Your Face"
+      ]
     },
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/LovesHurts-Nazareth.mp3",
       correct: "Loves Hurts",
-      options: ["Loves Hurts", "Lady Madonna", "Knock Three Times", "Bridge Over Troubled Water"]
+      options: [
+        "Loves Hurts",
+        "Lady Madonna",
+        "Knock Three Times",
+        "Bridge Over Troubled Water"
+      ]
     },
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/Mississippi_Pussicat.mp3",
       correct: "Mississippi",
-      options: ["I Am Woman", "Take Me Home", "Let’s Stay Together", "Mississippi"]
+      options: [
+        "I Am Woman",
+        "Take Me Home",
+        "Let’s Stay Together",
+        "Mississippi"
+      ]
     },
 
     {
@@ -56,13 +76,23 @@ document.addEventListener("DOMContentLoaded", () => {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/WutheringHeights_KateBush.mp3",
       correct: "Wuthering Heights",
-      options: ["Living for the City", "Bennie and the Jets", "Wuthering Heights", "The Way We Were"]
+      options: [
+        "Living for the City",
+        "Bennie and the Jets",
+        "Wuthering Heights",
+        "The Way We Were"
+      ]
     },
     {
       song:
         "https://radialistaedsonleite.github.io/qualeamusica1inter/mymistake_pholhas.mp3",
       correct: "My Mystake",
-      options: ["I Shot the Sheriff", "My Mystake", "Rock Your Baby", "If I Can’t Have You "]
+      options: [
+        "I Shot the Sheriff",
+        "My Mystake",
+        "Rock Your Baby",
+        "If I Can’t Have You "
+      ]
     }
 
     // ... (as outras músicas aqui)
@@ -115,7 +145,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     setTimeout(() => {
-      audio.play().catch((error) => console.error("Erro ao reproduzir áudio:", error));
+      audio
+        .play()
+        .catch((error) => console.error("Erro ao reproduzir áudio:", error));
     }, 500);
   }
 
@@ -151,14 +183,16 @@ document.addEventListener("DOMContentLoaded", () => {
     finalScreen.style.display = "block";
 
     // Definir o estilo para alinhamento à esquerda nos comentários
-    finalScreen.style.textAlign = "left";  // Alinha à esquerda
-    finalScreen.style.padding = "20px";  // Adiciona um pouco de padding para melhorar a visualização
+    finalScreen.style.textAlign = "left"; // Alinha à esquerda
+    finalScreen.style.padding = "20px"; // Adiciona um pouco de padding para melhorar a visualização
 
     const q = questions[currentQuestionIndex - 1]; // Última pergunta
 
-    let commentsHTML = '';
+    let commentsHTML = "";
     for (let i = 0; i < questions.length; i++) {
-        commentsHTML += `<p><strong>Comentário sobre a música ${i + 1}:</strong> ${descriptions[i]}</p>`;
+      commentsHTML += `<p><strong>Comentário sobre a música ${
+        i + 1
+      }:</strong> ${descriptions[i]}</p>`;
     }
 
     finalScreen.innerHTML = `
@@ -173,23 +207,24 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     `;
 
-    document.getElementById("restart-btn").addEventListener("click", restartGame);
+    document
+      .getElementById("restart-btn")
+      .addEventListener("click", restartGame);
     document.getElementById("exit-btn").addEventListener("click", exitGame);
-}
-
-
+  }
 
   function restartGame() {
     currentQuestionIndex = 0;
+    score = parseInt(localStorage.getItem("playerScore")) || 0; // Recupera a pontuação salva
     finalScreen.style.display = "none";
     gameContainer.style.display = "block";
     scoreText.textContent = `Pontuação: ${score}`;
     loadQuestion();
   }
-
   function exitGame() {
+    const newUrl = `https://radialistaedsonleite.github.io/jogos-HTML/?score=${score}`;
     alert("Obrigado por jogar! Até a próxima! 🎶");
-    location.reload();
+    window.location.href = "https://radialistaedsonleite.github.io/jogos-HTML/";
   }
 
   scoreText.textContent = `Pontuação: ${score}`;
