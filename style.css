@@ -85,8 +85,12 @@ button.wrong {
   padding: 20px;
 }
 
-#final-screen p {
-  margin-bottom: 10px; /* Adiciona um espaçamento entre os parágrafos */
+#final-screen h1 {
+  color: red;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
 }
 
 button {
