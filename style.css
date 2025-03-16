@@ -93,6 +93,8 @@ button.wrong {
   margin-top: 20px;
 }
 
+
+
 button {
   padding: 10px 20px;
   font-size: 22px;
@@ -137,3 +139,4 @@ button:hover {
   color: #fff;
   border-left-color: #ffcc00;
 }
+
