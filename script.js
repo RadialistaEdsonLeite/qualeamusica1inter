@@ -1,119 +1,143 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("final-screen").style.display = "none";
 
+  const IMAGE_SIZE = 300; // 🔥 Altere aqui para mudar o tamanho das imagens (ex: 300 para 300x300px)
+
   const questions = [
-    {
-      song:
-        "https://radialistaedsonleite.github.io/qualeamusica1inter/DontLetMeDown_TheHollies.mp3",
-      correct: "Don't Let Me Down",
-      options: ["Let It Be", "American Pie", "Don't Let Me Down", "Imagine"]
-    },
-    {
-      song:
-        "https://radialistaedsonleite.github.io/qualeamusica1inter/INeverCry_AliceCooper.mp3",
-      correct: "I Never Cry",
-      options: ["Maggie May", "My Sweet Lord", "I Never Cry", "What's Going On"]
-    },
-    {
-      song:
-        "https://radialistaedsonleite.github.io/qualeamusica1inter/IStartedAJoke_BeeGees.mp3",
-      correct: "I StartedA Joke",
+        {
+      song: "https://radialistaedsonleite.github.io/qualeamusica2inter/RockAndRollLullaby-BJThomas.mp3",
+      name: "Rock And Roll Lullaby",
+      artist: "BJ Thomas",
+      image: "https://radialistaedsonleite.github.io/qualeamusica2inter/RockAndRollLullaby-BJThomas.jpg",
+      description: "B. J. Thomas. Lançada em 1972, é uma das baladas mais emocionantes do rock/pop da época. A música tem uma melodia suave e nostálgica, com um arranjo que mistura o rock clássico com elementos de gospel e doo-wop. A letra conta a história de um menino criado por uma mãe solteira, que encontra conforto nas canções de ninar que ela cantava para ele.",
       options: [
-        "Stairway to Heaven",
-        "I StartedA Joke",
-        "I Can See Clearly Now",
-        "Superstition"
-      ]
+        { name: "Bridge Over Troubled Water", artist: "George McCrae" },
+        { name: "Rock And Roll Lullaby", artist: "BJ Thomas" },
+        { name: "I Am Woman", artist: "Stealers Wheel" },
+        { name: "Take Me Home", artist: "Smokey Robinson & The Miracles" }
+      ] 
+          
     },
     {
-      song:
-        "https://radialistaedsonleite.github.io/qualeamusica1inter/ItsAHeartache_BonnieTyler.mp3",
-      correct: "It's A Heartache",
+      song: "https://radialistaedsonleite.github.io/qualeamusica2inter/AloneAgainNaturally-GilbertOSullivan.mp3",
+      name: "Alone Again (Naturally)",
+      artist: "Gilbert O'Sullivan",
+      image: "https://radialistaedsonleite.github.io/qualeamusica2inter/AloneAgainNaturally-GilbertOSullivan.jpg",
+      description: "Gilbert O'Sullivan (1972): Uma balada melancólica e introspectiva que aborda temas de solidão e perda, com uma melodia suave contrastando com a letra triste. A interpretação sincera de Gilbert O’Sullivan fez dela um grande sucesso nos anos 70.",
       options: [
-        "Lean on Me",
-        "Rocket Man",
-        "It's A Heartache",
-        "The First Time Ever I Saw Your Face"
-      ]
+        { name: "Play That Funky Music", artist: "Wild Cherry" },
+        { name: "Because", artist: "The Dave Clark Five" },
+        { name: "If", artist: "Bread" },
+        { name: "Alone Again (Naturally)", artist: "Gilbert O'Sullivan" }
+      ] 
     },
     {
-      song:
-        "https://radialistaedsonleite.github.io/qualeamusica1inter/LovesHurts-Nazareth.mp3",
-      correct: "Loves Hurts",
+      song: "https://radialistaedsonleite.github.io/qualeamusica2inter/AmericanPie-DonMcLean.mp3",
+      name: "American Pie",
+      artist: "Don McLean",
+      image: "https://radialistaedsonleite.github.io/qualeamusica2inter/AmericanPie-DonMcLean.jpg",
+      description: "(1971): Uma das composições mais emblemáticas da música folk-rock, American Pie é um épico de oito minutos que faz referências enigmáticas à cultura americana e à tragédia do The Day the Music Died (a morte de Buddy Holly, Ritchie Valens e Big Bopper em 1959).",
       options: [
-        "Loves Hurts",
-        "Lady Madonna",
-        "Knock Three Times",
-        "Bridge Over Troubled Water"
-      ]
+        { name: "Daniel", artist: "Elton John" },
+        { name: "American Pie", artist: "Don McLean" },
+        { name: "Let’s Stay Together", artist: "Supertramp" },
+        { name: "Living for the City", artist: "James Taylor" }
+        
+      ] 
     },
     {
-      song:
-        "https://radialistaedsonleite.github.io/qualeamusica1inter/Mississippi_Pussicat.mp3",
-      correct: "Mississippi",
+      song: "https://radialistaedsonleite.github.io/qualeamusica2inter/Angie-TheRollingStones.mp3",
+      name: "Angie",
+      artist: "The Rolling Stones",
+      image: "https://radialistaedsonleite.github.io/qualeamusica2inter/Angie-TheRollingStones.jpg",
+      description: "(1973):  Uma das baladas mais famosas dos Rolling Stones, Angie tem uma melodia delicada e emotiva, com um solo de guitarra inesquecível e a interpretação melancólica de Mick Jagger. Embora haja especulações sobre a inspiração da música, Keith Richards afirmou que o nome foi escolhido aleatoriamente.",
       options: [
-        "I Am Woman",
-        "Take Me Home",
-        "Let’s Stay Together",
-        "Mississippi"
-      ]
-    },
-
-    {
-      song:
-        "https://radialistaedsonleite.github.io/qualeamusica1inter/Sailing_RodStewart.mp3",
-      correct: "Sailing",
-      options: ["Daniel", "Angie", "Sailing", "Goodbye Yellow Brick Road"]
-    },
-
-    {
-      song:
-        "https://radialistaedsonleite.github.io/qualeamusica1inter/Tornero_ISantoCalifornia.mp3",
-      correct: "Tornero",
-      options: ["Tornero", "Champagne", "Ti scrivero", "Bella Senz'Anima"]
+        { name: "Angie", artist: "The Rolling Stones" },
+        { name: "Free Bird", artist: "Lynyrd Skynyrd" },
+        { name: "Don't Stop Believin", artist: "Journey" },
+        { name: "Angel Of Mine", artist: "Mark Davis" }
+      ] 
+      
     },
     {
-      song:
-        "https://radialistaedsonleite.github.io/qualeamusica1inter/WutheringHeights_KateBush.mp3",
-      correct: "Wuthering Heights",
+      song: "https://radialistaedsonleite.github.io/qualeamusica2inter/AnotherBrickintheWall-PinkFloyd.mp3",
+      name: "Another Brick in the Wall",
+      artist: "PinkFloyd",
+      image: "https://radialistaedsonleite.github.io/qualeamusica2inter/AnotherBrickintheWall-PinkFloyd.jpg",
+      description: "(1979): Um dos maiores sucessos do Pink Floyd, essa música faz parte do álbum The Wall e critica o sistema educacional rígido e opressor. A icônica linha We don’t need no education virou um hino de rebeldia, impulsionado pelo uso inovador de um coral infantil.",
       options: [
-        "Living for the City",
-        "Bennie and the Jets",
-        "The Way We Were",
-        "Wuthering Heights"
-      ]
+        { name: "Living for the City", artist: "The Rolling Stones" },
+        { name: "The Way We Were", artist: "The Everly Brothers" },
+        { name: "Another Brick in the Wall", artist: "PinkFloyd" },
+        { name: "I Shot the Sheriff", artist: "The Doobie Brothers" }
+      ] 
     },
     {
-      song:
-        "https://radialistaedsonleite.github.io/qualeamusica1inter/mymistake_pholhas.mp3",
-      correct: "My Mystake",
+      song: "https://radialistaedsonleite.github.io/qualeamusica2inter/BabyILoveYourWay-PeterFrampton.mp3",
+      name: "Baby I Love Your Way",
+      artist: "Peter Frampton",
+      image: "https://radialistaedsonleite.github.io/qualeamusica2inter/BabyILoveYourWay-PeterFrampton.jpg",
+      description: "(1975): Uma das músicas mais românticas da década de 70, com uma melodia envolvente e a voz suave de Peter Frampton. Lançada no álbum Frampton Comes Alive!, se tornou uma das canções mais pedidas em rádios e regravada diversas vezes ao longo dos anos.",
       options: [
-        "I Shot the Sheriff",
-        "My Mystake",
-        "Rock Your Baby",
-        "If I Can’t Have You "
-      ]
-    }
-
-    // ... (as outras músicas aqui)
-  ];
-
-  // Descrições das músicas
-  const descriptions = [
-    "Don't Let Me Down – The Hollies (1969): Escrita por Tony Hicks, Allan Clarke e Terry Sylvester, essa música é um dos clássicos da banda, mas não deve ser confundida com a famosa canção dos Beatles com o mesmo nome.",
-    "I Never Cry – Alice Cooper (1976): Alice Cooper escreveu essa balada emocional sobre sua luta contra o alcoolismo. Diferente de seu estilo chocante habitual, essa música é uma das mais sentimentais de sua carreira.",
-    "I Started a Joke – Bee Gees (1968): Robin Gibb revelou que a inspiração para essa música veio durante um voo de avião. A letra melancólica e introspectiva fez dela um dos maiores sucessos da banda.",
-    "It's a Heartache – Bonnie Tyler (1977):🔹 Essa música foi um grande sucesso global, mas poucos sabem que Bonnie Tyler gravou sua versão enquanto se recuperava de uma cirurgia nas cordas vocais, o que deu um toque ainda mais rouco à sua voz.",
-    "Love Hurts – Nazareth (1975):🔹 Originalmente gravada pelos Everly Brothers em 1960, a versão do Nazareth se tornou a mais famosa e um hino das baladas de rock.",
-    "Mississippi – Pussycat (1975):🔹 O grupo holandês Pussycat alcançou o topo das paradas em vários países com essa música. Curiosamente, a melodia lembra o estilo country americano, mesmo sendo composta na Europa.",
-    "Sailing – Rod Stewart (1975):🔹 Embora seja um dos maiores sucessos de Rod Stewart, a música foi originalmente gravada pela banda The Sutherland Brothers em 1972. A versão de Stewart a transformou em um hit mundial.",
-    "Tornerò – I Santo California (1975):🔹 Esse clássico romântico italiano se tornou um fenômeno na Europa e América Latina, sendo uma das músicas mais regravadas da época.",
-    "Wuthering Heights – Kate Bush (1978):🔹 Inspirada no livro homônimo de Emily Brontë, Kate Bush escreveu a música aos 18 anos e se tornou a primeira mulher a alcançar o topo das paradas britânicas com uma composição própria.",
-    "My Mistake – Pholhas (1974):🔹 Embora a banda Pholhas seja brasileira, suas músicas são cantadas em inglês, e 'My Mistake' fez tanto sucesso que muitas pessoas achavam que o grupo era estrangeiro.",
-    "",
-    "Skyline Pigeon – Elton John (1969):🔹 Foi uma das primeiras músicas compostas por Elton John e Bernie Taupin. Ele mesmo considera essa uma de suas melhores composições dos primeiros anos de carreira."
-    // Adicione as descrições das músicas aqui
-    // ...
+        { name: "Baby I Love Your Way", artist: "Peter Frampton" },
+        { name: "Rock Your Baby", artist: "Led Zeppelin" },
+        { name: "Can’t Get Enough of Your Love, Babe", artist: "Heatwave" },
+        { name: "If I Can’t Have You", artist: "Steppenwolf" }        
+      ] 
+    },
+    {
+      song: "https://radialistaedsonleite.github.io/qualeamusica2inter/BadMoonRising-CreedenceClearwaterRevival.mp3",
+      name: "Bad Moon Rising",
+      artist: "Creedence Clearwater Revival",
+      image: "https://radialistaedsonleite.github.io/qualeamusica2inter/BadMoonRising-CreedenceClearwaterRevival.jpg",
+      description: "(1969):  Um rock enérgico e cativante, apesar de sua letra sombria que fala sobre presságios de destruição. A interpretação marcante de John Fogerty e o ritmo acelerado fizeram dessa canção um clássico do rock.",
+      options: [
+        { name: "The Joker", artist: "Gerry Rafferty" },
+        { name: "Band on the Run", artist: "The Who" },
+        { name: "If I Can’t Have You", artist: "The Dave Clark Five" },
+        { name: "Bad Moon Rising", artist: "Creedence Clearwater Revival" }
+      ] 
+    },
+    {
+      song: "https://radialistaedsonleite.github.io/qualeamusica2inter/MamyBlue-RickyShayne.mp3",
+      name: "Mamy Blue",
+      artist: "Ricky Shayne",
+      image: "https://radialistaedsonleite.github.io/qualeamusica2inter/MamyBlue-RickyShayne.jpg",
+      description: "Ricky Shayne: Esta música foi originalmente composta pelo francês Hubert Giraud e gravada pela banda espanhola Pop-Tops, mas ganhou versões em vários idiomas e intérpretes diferentes. Uma das mais conhecidas foi a do cantor Ricky Shayne, que lançou sua versão em alemão e inglês, tornando a canção um grande sucesso na Europa.",
+      options: [
+        { name: "Rainbow", artist: "John Paul Young" },
+        { name: "Mamy Blue", artist: "Ricky Shayne" },
+        { name: "I Feel Love", artist: "Billy Joel" },
+        { name: "Please Mr. Postman", artist: "Free" }        
+      ] 
+    },
+    {
+      song: "https://radialistaedsonleite.github.io/qualeamusica2inter/RainRainRain-SimonButterfly.mp3",
+      name: "Rain, Rain, Rain",
+      artist: "Simon Butterfly",
+      image: "https://radialistaedsonleite.github.io/qualeamusica2inter/RainRainRain-SimonButterfly.jpg",
+      description: "(1973):  Uma canção nostálgica e sentimental que se destacou na década de 70. Seu tom melancólico e melodia suave fizeram dela uma das músicas queridas pelos ouvintes da época, embora Simon Butterfly tenha sido um artista de poucos sucessos.",
+      options: [
+        { name: "My love for ", artist: "The Hollies" },
+        { name: "Serenade to Cripton", artist: "Booker T. & the MG’s" },
+        { name: "Blue Moon", artist: "Buffalo Springfield" },
+        { name: "Rain, Rain, Rain", artist: "Simon Butterfly" }
+      ] 
+    },
+    {
+      song: "https://radialistaedsonleite.github.io/qualeamusica2inter/skylinepigeon_eltonjohn.mp3",
+      name: "Skyline Pigeon",
+      artist: "Elton John",
+      image: "https://radialistaedsonleite.github.io/qualeamusica2inter/skylinepigeon_eltonjohn.jpg",
+      description: "(1969): Essa bela canção, presente no álbum Empty Sky (1969), foi uma das primeiras composições de sucesso da parceria entre Elton John e Bernie Taupin. A música fala sobre liberdade e o desejo de voar para longe, usando a metáfora de um pombo no céu. Curiosidade: Elton John gravou duas versões dessa música. A mais conhecida é a de 1973, regravada com um arranjo emocionante no piano (em vez do cravo usado na versão original).",
+      options: [
+        { name: "I Will Survive", artist: "The Emotions" },
+        { name: "Skyline Pigeon", artist: "Elton John" },
+        { name: "Stayin' Alive", artist: "The Kinks" },
+        { name: "More Than a Woman", artist: "Barry Manilow" }
+      ] 
+    },
+        
   ];
 
   let currentQuestionIndex = 0;
@@ -133,32 +157,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const q = questions[currentQuestionIndex];
     audio.src = q.song;
-    questionText.textContent = "Qual é a música?";
+    questionText.textContent = "Clique no play, ouça e responda!";
     optionsContainer.innerHTML = "";
 
     q.options.forEach((option) => {
       const btn = document.createElement("button");
-      btn.textContent = option;
+      btn.innerHTML = `<strong>${option.name}</strong><br><i>${option.artist}</i>`;
       btn.classList.add("option");
-      btn.onclick = () => checkAnswer(option);
+      btn.onclick = () => checkAnswer(option.name, option.artist);
       optionsContainer.appendChild(btn);
     });
 
     setTimeout(() => {
-      audio
-        .play()
-        .catch((error) => console.error("Erro ao reproduzir áudio:", error));
+      audio.play().catch((error) => console.error("Erro ao reproduzir áudio:", error));
     }, 500);
   }
 
-  function checkAnswer(answer) {
+  function checkAnswer(selectedName, selectedArtist) {
     if (currentQuestionIndex >= questions.length) return;
 
     const q = questions[currentQuestionIndex];
     audio.pause();
     audio.currentTime = 0;
 
-    if (answer === q.correct) {
+    if (selectedName === q.name && selectedArtist === q.artist) {
       score += 10;
     } else {
       score -= 5;
@@ -176,58 +198,53 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showFinalScreen() {
-  audio.pause();
-  audio.currentTime = 0;
+    audio.pause();
+    audio.currentTime = 0;
 
-  gameContainer.style.display = "none";
-  finalScreen.style.display = "block";
+    gameContainer.style.display = "none";
+    finalScreen.style.display = "block";
+    finalScreen.innerHTML = `
+      <h1 style="color: red; font-weight: bold; font-size: 1.5em;">Parabéns! Você já está com ${score} pontos!</h1>
+      <div>${generateFinalComments()}</div>
+      <div class="buttons-container">
+          <button id="restart-btn">Jogar Novamente</button>
+          <button id="exit-btn">Fechar o Jogo</button>
+      </div>
+    `;
 
-  finalScreen.style.textAlign = "left";
-  finalScreen.style.padding = "20px";
-
-  const q = questions[currentQuestionIndex - 1]; // Última pergunta
-
-  let commentsHTML = "";
-  for (let i = 0; i < questions.length; i++) {
-    commentsHTML += `<p><strong>Comentário sobre a música ${i + 1}:</strong> ${descriptions[i]}</p>`;
+    document.getElementById("restart-btn").addEventListener("click", restartGame);
+    document.getElementById("exit-btn").addEventListener("click", exitGame);
   }
 
-  // Atualizando a tela final com a pontuação
-  finalScreen.innerHTML = `
-    <h1 style="color: red; font-weight: bold; font-size: 2em;">Parabéns! Você já está com ${score} pontos!</h1>
-    <p>Sua pontuação final: <strong>${score}</strong> 🎉</p>
-    <div>${commentsHTML}</div>
-    
-    <!-- Contêiner para botões centralizados -->
-    <div class="buttons-container">
-        <button id="restart-btn">Jogar Novamente</button>
-        <button id="exit-btn">Fechar o Jogo</button>
-    </div>
-  `;
-
-  // Ações dos botões
-  document
-    .getElementById("restart-btn")
-    .addEventListener("click", restartGame);
-  document.getElementById("exit-btn").addEventListener("click", exitGame);
+  function generateFinalComments() {
+  return questions
+    .map(
+      (q) => `
+        <div style="margin-bottom: 5px; text-align: center;">
+          <p>↴  ↴  ↴</p> <!-- Aqui está o texto com os asteriscos -->
+          <strong>${q.name} - ${q.artist}</strong>
+          <img src="${q.image}" alt="${q.name}" style="width: ${IMAGE_SIZE}px; height: ${IMAGE_SIZE}px; display: block; margin: 5px auto;">
+          <p>${q.description}</p>
+        </div>
+      `
+    )
+    .join("");
 }
-
 
 
   function restartGame() {
     currentQuestionIndex = 0;
-    score = parseInt(localStorage.getItem("playerScore")) || 0; // Recupera a pontuação salva
+    score = parseInt(localStorage.getItem("playerScore")) || 0;
     finalScreen.style.display = "none";
     gameContainer.style.display = "block";
     scoreText.textContent = `Pontuação: ${score}`;
     loadQuestion();
   }
+
   function exitGame() {
-    const newUrl = `https://radialistaedsonleite.github.io/jogos-HTML/?score=${score}`;
-    alert("Obrigado por jogar! Até a próxima! 🎶");
-    window.location.href = "https://radialistaedsonleite.github.io/jogos-HTML/";
+    window.location.href = "https://radialistaedsonleite.github.io/jogos-HTML";
   }
 
-  scoreText.textContent = `Pontuação: ${score}`;
+  scoreText.textContent = `Pontuação: ${score}`; // Exibe a pontuação ao iniciar
   loadQuestion();
 });
