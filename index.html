@@ -1,36 +1,518 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qual é a Música? Clique abaixo, ouça e responda!</title>
-  <link rel="stylesheet" href="style.css"> <!-- Vinculando o arquivo CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Musical</title>
+    <style>
+     
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+                  }
+      
+      #banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white; /* Opcional: adiciona um fundo para evitar sobreposição */
+}
+
+#banner img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+#quiz-container {
+    margin-top: 100px; /* Adiciona um espaço para não sobrepor o banner */
+}
+
+        #quiz-container {
+            width:100%;
+            margin: auto;
+            padding: 5px;
+            background: white;
+            color: darkblue;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+        }
+        .question {
+            font-size: 22px;
+            font-weight: bold;
+            color: red;
+            margin-bottom: 5px;
+        }
+        .option {
+    display: flex;
+    flex-direction: column;      /* Organiza o conteúdo na direção vertical */
+    align-items: center;         /* Alinha os itens horizontalmente ao centro */
+    justify-content: center;     /* Centra o conteúdo verticalmente */
+    width: 100%;
+    margin: 5px auto;
+    padding: 5px;
+    border: 3px solid black;
+    color: white;
+    background: darkblue;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.song-title {
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin-bottom: 2px; /* Diminuindo a margem inferior */
+}
+
+.artist-name {
+    font-style: italic;
+    font-weight: normal;
+    display: block;
+    margin-top: 0;  /* Removendo a margem superior */
+    margin-bottom: 0;  /* Evita margem inferior adicional */
+    text-align: center;
+    line-height: 1.2; /* Controle de espaçamento entre as linhas */
+    padding-top: 0; /* Removendo qualquer padding superior */
+}
+
+
+      #status-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        #score {
+            font-size: 15px;
+            margin: 0 10px;
+        }
+        #feedback {
+            font-size: 15px;
+            margin-left: 10px;
+            transition: opacity 0.5s;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+        #final-message {
+            display: none;
+            margin-top: 20px;
+        }
+        #final-image {
+            width: 300px;
+            display: block;
+            margin: auto;
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            background-color: darkblue;
+            color: white;
+            font-weight: bold;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: darkblue;
+        }
+        .artist-info {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .artist-info img {
+            width: 300px;
+            height: 300px;
+            display: block;
+            margin: auto;
+        }
+        .artist-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+     .artist-item {
+    max-width: 98%;
+       color: black; 
+    margin: 0 auto; /* Centraliza a div dentro do contêiner pai */
+    text-align: center; /* Centraliza os elementos dentro da div, incluindo a imagem */
+}
+
+.artist-item img {
+    max-width: 300px; /* A imagem vai ocupar 100% da largura da div */
+    height: auto; /* Mantém a proporção da imagem */
+    display: inline-block; /* A imagem vai se comportar como um bloco inline, o que facilita a centralização */
+  margin-top: 30px; /* Adiciona um espaço de 10px acima da imagem */
+  
+}
+
+</style>
 </head>
-
 <body>
-  <div id="game">
-    <h1>Qual é a Música?</h1>
-    <p id="question">Clique no play e responda Qual é a Música</p>
-    <div id="audio-container">
-      <audio id="audio" controls>
-        <source src="audio/musica.mp3" type="audio/mpeg">
-        Seu navegador não suporta o elemento de áudio.
-      </audio>
+ <div id="banner">
+    <a href="https://sites.google.com/view/palavraeacao/qual-%C3%A9-a-m%C3%BAsica" target="_blank">
+        <img id="bannerImg" src="banner1.jpg" alt="Banner Publicitário">
+    </a>
+</div>
+ 
+<div id="quiz-container">
+    <h2>Teste seus conhecimentos sobre música!</h2>
+
+    <!-- Botão de Início -->
+    <button id="start-btn" class="btn" onclick="startQuiz()">Clique agora para começar o Desafio!</button>
+
+    <div id="status-container" style="display: none;">
+        <audio class="audio-player" id="audioPlayer" controls>
+            <source src="" type="audio/mp3">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+        <div id="score">Pontuação: 0</div>
+        <div id="feedback"></div>
+    </div>    
+            
+    <div id="question-container" style="display: none;">
+        <p class="question" id="question">Qual é a música?
+        <div id="options-container">
+            <!-- Exemplo de como os botões serão gerados -->
+            <button class="option" onclick="checkAnswer(0)">
+    <span class="song-title">Wuthering Heights</span>
+    <span class="artist-name">Kate Bush</span>
+</button>
+
+<button class="option" onclick="checkAnswer(1)">
+    <span class="song-title">Tornerò</span>
+    <span class="artist-name">I Santo California</span>
+</button>
+
+<button class="option" onclick="checkAnswer(2)">
+    <span class="song-title">Sailing</span>
+    <span class="artist-name">Rod Stewart</span>
+</button>
+
+        </div>
+    </div> <!-- Fechamento correto -->
+</div> <!-- Fechamento correto -->
+</body>
+ 
+
+        <div id="artist-info-container" style="display: none;">
+            <!-- Informações do artista serão exibidas aqui ao final do jogo -->
+        </div>
     </div>
-    <div id="options"></div>
-    <p id="score">Pontuação: 0</p>
-    <p id="music-comment" style="font-style: italic; margin-top: 20px;"></p> <!-- Comentário da música -->
-  </div>
+  <div id="final-message" style="display: none;">
+        <a href="https://www.palavraeacao.com.br" class="btn">Sair do Jogo</a>
+    <a href="https://radialistaedsonleite.github.io/jogos-HTML/" class="btn">Voltar às Opções</a>
+    <p id="final-text">↓ Compartilhe com amigos! ↓</p>
+    
+    <!-- Novo botão de compartilhamento -->
+    <!-- Novo botão de compartilhamento -->
+<button class="btn" id="share-btn" onclick="shareGame()">Compartilhar com Amigos</button>
+</div>
 
-  <!-- Tela de Conclusão -->
-  <div id="final-screen" style="display: none; text-align: center; padding: 20px;">
-    <!-- O conteúdo será preenchido pelo JavaScript -->
-  </div>
+   <script>
+    
+     // Função de compartilhamento
+    function shareGame() {
+        const gameUrl = "https://radialistaedsonleite.github.io/jogos-HTML/"; // Link fixo do jogo
+        const shareText = '🎵 Desafio "Qual é a Música?" Venha testar seus conhecimentos musicais! 🎶'; // Texto de compartilhamento
 
-  <!-- Carregar o script no final do body -->
-  <script src="script.js"></script>
+        if (navigator.share) {
+            // Caso o navegador suporte a API de compartilhamento
+            navigator.share({
+                title: 'Qual é a Música?',
+                text: shareText,
+                url: gameUrl
+            }).then(() => {
+                console.log('Jogo compartilhado com sucesso!');
+            }).catch((error) => {
+                console.log('Erro ao compartilhar:', error);
+            });
+        } else {
+            // Compartilhamento manual via WhatsApp
+            const shareLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + gameUrl)}`;
+            window.open(shareLink, '_blank');
+        }
+    }
+     
+        const questions = [
+           
+          {
+                question: "Qual é a música?",  // Adicionando a chave question           
+                options: [
+"I Am Woman - Stealers Wheel",
+"Take Me Home - Smokey Robinson & The Miracles",
+"Rock And Roll Lullaby - B. J. Thomas"],
+                correctAnswer: 2, // 0 ou 1 ou 2
+                musicLink: "https://radialistaedsonleite.github.io/qualeamusica2inter/RockAndRollLullaby-BJThomas.mp3",
+                image: "https://radialistaedsonleite.github.io/qualeamusica2inter/RockAndRollLullaby-BJThomas.jpg",
+                artistInfo: "B. J. Thomas. Lançada em 1972, é uma das baladas mais emocionantes do rock/pop da época. A música tem uma melodia suave e nostálgica, com um arranjo que mistura o rock clássico com elementos de gospel e doo-wop. A letra conta a história de um menino criado por uma mãe solteira, que encontra conforto nas canções de ninar que ela cantava para ele.",
+                 },
+
+{
+                question: "Qual é a música?",  // Adicionando a chave question           
+                options: [
+"Alone Again Naturally - GilbertOSullivan",
+"Because - The Dave Clark Five",
+"Play That Funky Music - Wild Cherry"],
+                correctAnswer: 0, // 0 ou 1 ou 2
+                musicLink: "https://radialistaedsonleite.github.io/qualeamusica2inter/AloneAgainNaturally-GilbertOSullivan.mp3",
+                image: "https://radialistaedsonleite.github.io/qualeamusica2inter/AloneAgainNaturally-GilbertOSullivan.jpg",
+                artistInfo: "Gilbert O'Sullivan (1972): Uma balada melancólica e introspectiva que aborda temas de solidão e perda, com uma melodia suave contrastando com a letra triste. A interpretação sincera de Gilbert O’Sullivan fez dela um grande sucesso nos anos 70.",
+                 },
+                  
+                  {
+                question: "Qual é a música?",  // Adicionando a chave question           
+                options: [
+"Let’s Stay Together - Supertramp",
+"American Pie - DonMcLean",
+"Living for the City - James Taylor"],
+                correctAnswer: 1, // 0 ou 1 ou 2
+                musicLink: "https://radialistaedsonleite.github.io/qualeamusica2inter/AmericanPie-DonMcLean.mp3",
+                image: "https://radialistaedsonleite.github.io/qualeamusica2inter/AmericanPie-DonMcLean.jpg",
+                artistInfo: "(1971): Uma das composições mais emblemáticas da música folk-rock, American Pie é um épico de oito minutos que faz referências enigmáticas à cultura americana e à tragédia do The Day the Music Died (a morte de Buddy Holly, Ritchie Valens e Big Bopper em 1959).",
+                 },
+          
+          {
+                question: "Qual é a música?",  // Adicionando a chave question           
+                options: [
+"Angie - The Rolling Stones",
+"Free Bird - Lynyrd Skynyrd",
+"Angel Of Mine - Mark Davis"],
+                correctAnswer: 0, // 0 ou 1 ou 2
+                musicLink: "https://radialistaedsonleite.github.io/qualeamusica2inter/Angie-TheRollingStones.mp3",
+                image: "https://radialistaedsonleite.github.io/qualeamusica2inter/Angie-TheRollingStones.jpg",
+                artistInfo: "(1973):  Uma das baladas mais famosas dos Rolling Stones, Angie tem uma melodia delicada e emotiva, com um solo de guitarra inesquecível e a interpretação melancólica de Mick Jagger. Embora haja especulações sobre a inspiração da música, Keith Richards afirmou que o nome foi escolhido aleatoriamente.",
+                 },
+          
+          {
+                question: "Qual é a música?",  // Adicionando a chave question           
+                options: [
+"The Way We Were - The Everly Brothers",
+"Another Brick In The Wall-PinkFloyd",
+"I Shot the Sheriff - The Doobie Brothers"],
+                correctAnswer: 1, // 0 ou 1 ou 2
+                musicLink: "https://radialistaedsonleite.github.io/qualeamusica2inter/AnotherBrickintheWall-PinkFloyd.mp3",
+                image: "https://radialistaedsonleite.github.io/qualeamusica2inter/AnotherBrickintheWall-PinkFloyd.jpg",
+                artistInfo: "(1979): Um dos maiores sucessos do Pink Floyd, essa música faz parte do álbum The Wall e critica o sistema educacional rígido e opressor. A icônica linha We don’t need no education virou um hino de rebeldia, impulsionado pelo uso inovador de um coral infantil.",
+                 },
+
+{
+                question: "Qual é a música?",  // Adicionando a chave question           
+                options: [
+"If I Can’t Have You - Steppenwolf",
+"Rock Your Baby - Led Zeppelin",
+"Baby I Love Your Way - Peter Frampton"],
+                correctAnswer: 2, // 0 ou 1 ou 2
+                musicLink: "https://radialistaedsonleite.github.io/qualeamusica2inter/BabyILoveYourWay-PeterFrampton.mp3",
+                image: "https://radialistaedsonleite.github.io/qualeamusica2inter/BabyILoveYourWay-PeterFrampton.jpg",
+                artistInfo: "(1975): Uma das músicas mais românticas da década de 70, com uma melodia envolvente e a voz suave de Peter Frampton. Lançada no álbum Frampton Comes Alive!, se tornou uma das canções mais pedidas em rádios e regravada diversas vezes ao longo dos anos.",
+                 },
+
+          {
+                question: "Qual é a música?",  // Adicionando a chave question           
+                options: [
+"The Joker - Gerry Rafferty",
+"If I Can’t Have You - The Dave Clark Five",
+"Bad Moon Rising - Creedence Clearwater Revival"],
+                correctAnswer: 2, // 0 ou 1 ou 2
+                musicLink: "https://radialistaedsonleite.github.io/qualeamusica2inter/BadMoonRising-CreedenceClearwaterRevival.mp3",
+                image: "https://radialistaedsonleite.github.io/qualeamusica2inter/BadMoonRising-CreedenceClearwaterRevival.jpg",
+                artistInfo: "(1969):  Um rock enérgico e cativante, apesar de sua letra sombria que fala sobre presságios de destruição. A interpretação marcante de John Fogerty e o ritmo acelerado fizeram dessa canção um clássico do rock.",
+                 },
+{
+                question: "Qual é a música?",  // Adicionando a chave question           
+                options: [
+"Rainbow - John Paul Young",
+"Mamy Blue - Ricky Shayne",
+"I Feel Love - Billy Joel"],
+                correctAnswer: 1, // 0 ou 1 ou 2
+                musicLink: "https://radialistaedsonleite.github.io/qualeamusica2inter/MamyBlue-RickyShayne.mp3",
+                image: "https://radialistaedsonleite.github.io/qualeamusica2inter/MamyBlue-RickyShayne.jpg",
+                artistInfo: "Ricky Shayne: Esta música foi originalmente composta pelo francês Hubert Giraud e gravada pela banda espanhola Pop-Tops, mas ganhou versões em vários idiomas e intérpretes diferentes. Uma das mais conhecidas foi a do cantor Ricky Shayne, que lançou sua versão em alemão e inglês, tornando a canção um grande sucesso na Europa",
+                 },
+{
+                question: "Qual é a música?",  // Adicionando a chave question           
+                options: [
+"Rain Rain Rain - Simon Butterfly",
+"Blue Moon - Buffalo Springfield",
+"My love for - The Hollies"],
+                correctAnswer: 0, // 0 ou 1 ou 2
+                musicLink: "https://radialistaedsonleite.github.io/qualeamusica2inter/RainRainRain-SimonButterfly.mp3",
+                image: "https://radialistaedsonleite.github.io/qualeamusica2inter/RainRainRain-SimonButterfly.jpg",
+                artistInfo: "(1973):  Uma canção nostálgica e sentimental que se destacou na década de 70. Seu tom melancólico e melodia suave fizeram dela uma das músicas queridas pelos ouvintes da época, embora Simon Butterfly tenha sido um artista de poucos sucessos.",
+                 },
+
+{
+                question: "Qual é a música?",  // Adicionando a chave question           
+                options: [
+"Skyline Pigeon - Elton John",
+"Stayin' Alive - The Kinks",
+"I Will Survive - The Emotions"],
+                correctAnswer: 0, // 0 ou 1 ou 2
+                musicLink: "https://radialistaedsonleite.github.io/qualeamusica2inter/skylinepigeon_eltonjohn.mp3",
+                image: "https://radialistaedsonleite.github.io/qualeamusica2inter/skylinepigeon_eltonjohn.jpg",
+                artistInfo: "(1969): Essa bela canção, presente no álbum Empty Sky (1969), foi uma das primeiras composições de sucesso da parceria entre Elton John e Bernie Taupin. A música fala sobre liberdade e o desejo de voar para longe, usando a metáfora de um pombo no céu. Curiosidade: Elton John gravou duas versões dessa música. A mais conhecida é a de 1973, regravada com um arranjo emocionante no piano (em vez do cravo usado na versão original).",
+                 },
+                   
+        ];
+
+        let currentQuestionIndex = 0;
+let score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
+
+        // Função para iniciar o quiz
+        function startQuiz() {
+            document.querySelector('h2').style.display = 'none';  // Esconde "Teste seus conhecimentos sobre música!"
+            document.getElementById('start-btn').style.display = 'none';  // Esconde o botão de "Começar"
+            document.getElementById('question-container').style.display = 'block';  // Exibe a primeira questão
+            document.getElementById('status-container').style.display = 'flex';  // Exibe a pontuação
+            showQuestion();
+        }
+
+        function showQuestion() {
+    const question = questions[currentQuestionIndex];
+    document.getElementById('question').textContent = question.question;
+    const options = document.querySelectorAll('.option');
+    options.forEach((button, index) => {
+        button.innerHTML = `
+            <span class="song-title">${question.options[index].split(" - ")[0]}</span>
+            <span class="artist-name">${question.options[index].split(" - ")[1]}</span>
+        `;
+    });
+
+    // Aqui você deve garantir que o áudio da pergunta seja carregado corretamente
+    const audioPlayer = document.getElementById('audioPlayer');
+    audioPlayer.src = question.musicLink;  // Atualiza a fonte de áudio
+    audioPlayer.play();  // Reproduz o áudio assim que a questão for carregada
+}
+function showEndGameButtons() {
+    // Esconde os elementos do quiz
+    document.getElementById('question-container').style.display = 'none';  // Esconde a questão
+    document.getElementById('status-container').style.display = 'none';  // Esconde a pontuação
+    document.getElementById('audioPlayer').style.display = 'none';  // Esconde o player de áudio
+
+    // Esconde o título e o subtítulo quando o jogo termina
+    document.querySelector('h2').style.display = 'none';  // Esconde "Teste seus conhecimentos sobre música!"
+
+    // Exibe os botões de finalização
+    document.getElementById('final-message').style.display = 'block';
+    showArtistInfo(); // Exibe as informações dos artistas ao final
+
+    // Exibe o score no final
+    const finalScore = document.createElement('p');
+    finalScore.textContent = `Sua pontuação final é: ${score}`;
+    finalScore.style.fontSize = '20px';
+    finalScore.style.fontWeight = 'bold';
+    finalScore.style.marginTop = '20px';
+    document.getElementById('final-message').insertBefore(finalScore, document.querySelector('.btn'));
+
+    }
+        function showArtistInfo() {
+    // Preencher e exibir as informações dos artistas
+    const artistInfoContainer = document.getElementById('artist-info-container');
+    artistInfoContainer.innerHTML = questions.map(question => {
+        return `
+       <div class="artist-item">
+    
+    <img src="${question.image}" alt="Imagem do Artista">
+    <p>${question.artistInfo}</p>
+</div>
+
+        `;
+    }).join('');  // Junta todos os elementos gerados para exibir de uma vez.
+
+    artistInfoContainer.style.display = 'block'; // Exibe as informações ao final
+}
+
+
+        function checkAnswer(index) {
+            const audioPlayer = document.getElementById('audioPlayer');
+            audioPlayer.pause();
+
+            const question = questions[currentQuestionIndex];
+            const feedbackElement = document.getElementById('feedback');
+            const statusElement = document.getElementById('score');
+
+            if (index === question.correctAnswer) {
+                feedbackElement.textContent = 'Correto!';
+                feedbackElement.classList.remove('incorrect');
+                feedbackElement.classList.add('correct');
+                score += 10;
+            } else {
+                feedbackElement.textContent = 'Incorreto!';
+                feedbackElement.classList.remove('correct');
+                feedbackElement.classList.add('incorrect');
+               score -= 5;
+            }
+
+            localStorage.setItem('score', score);
+            statusElement.textContent = `Pontos: ${score}`;
+
+            // Avançar para a próxima pergunta ou finalizar
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                setTimeout(() => {
+                    showQuestion();
+                    feedbackElement.textContent = '';
+                }, 700);
+            } else {
+                setTimeout(showEndGameButtons, 700);
+            }
+        }
+      document.addEventListener('DOMContentLoaded', function() {
+    const startBtn = document.getElementById('start-btn');
+    startBtn.addEventListener('click', startQuiz);
+            
+        const banners = [
+        "banner1.jpg",
+        "banner2.jpg",
+        "banner3.jpg",
+        "banner4.jpg",
+        "banner5.jpg"
+    ];
+
+    let shuffledBanners = [];
+    let currentIndex = 0;
+
+    function shuffleArray(array) {
+        return array.sort(() => Math.random() - 0.5);
+    }
+
+    function updateBanner() {
+        if (currentIndex >= shuffledBanners.length) {
+            shuffledBanners = shuffleArray([...banners]); // Reembaralha quando todos forem exibidos
+            currentIndex = 0;
+        }
+
+        document.getElementById("bannerImg").src = 
+            "https://radialistaedsonleite.github.io/propagandas/" + shuffledBanners[currentIndex];
+
+        currentIndex++;
+    }
+
+    // Inicia os banners
+    updateBanner();
+});   
+         
+     
+    </script>
 
 </body>
-
 </html>
